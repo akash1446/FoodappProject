@@ -1,0 +1,422 @@
+/* =========================
+   GOOGLE FONT
+========================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  background: #000;
+  overflow-x: hidden;
+}
+
+/* =========================
+   STORE WRAPPER
+========================= */
+
+.store-wrapper {
+  position: relative;
+
+  min-height: 100vh;
+
+  width: 100%;
+
+  padding: 40px 6%;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+/* =========================
+   BACKGROUND VIDEO
+========================= */
+
+.background-video {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: -3;
+}
+
+/* =========================
+   VIDEO OVERLAY
+========================= */
+
+.video-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.78),
+      rgba(10, 10, 10, 0.55)
+    );
+
+  backdrop-filter: blur(4px);
+
+  z-index: -2;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header-section {
+  text-align: center;
+
+  margin-bottom: 50px;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+.header-section h1 {
+  font-size: 52px;
+
+  font-weight: 800;
+
+  color: #ffffff;
+
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.5),
+    0 0 25px rgba(52, 152, 219, 0.7);
+}
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
+.list-container {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(270px, 1fr)
+  );
+
+  gap: 35px;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.grid-card {
+  background: rgba(15, 23, 42, 0.75);
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(14px);
+
+  transition: 0.4s ease;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.45),
+    0 0 15px rgba(52, 152, 219, 0.15);
+}
+
+.grid-card:hover {
+  transform: translateY(-10px)
+    scale(1.02);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.55),
+    0 0 25px rgba(52, 152, 219, 0.35);
+}
+
+/* =========================
+   IMAGE BOX
+========================= */
+
+.img-box {
+  width: 100%;
+
+  height: 240px;
+
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: 0.5s ease;
+}
+
+.grid-card:hover img {
+  transform: scale(1.1);
+}
+
+/* =========================
+   CARD INFO
+========================= */
+
+.card-info {
+  padding: 22px;
+}
+
+.card-info h3 {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #ffffff;
+
+  margin-bottom: 12px;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.price {
+  font-size: 24px;
+
+  font-weight: 800;
+
+  color: #f1c40f;
+
+  margin-bottom: 14px;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.desc {
+  color: #d1d5db;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  margin-bottom: 20px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.cart-btn {
+  width: 100%;
+
+  height: 52px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #3498db,
+    #6dd5fa,
+    #2980b9
+  );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.4s ease;
+
+  box-shadow:
+    0 6px 18px
+    rgba(52, 152, 219, 0.35);
+}
+
+.cart-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 24px
+      rgba(52, 152, 219, 0.45),
+    0 0 20px
+      rgba(109, 213, 250, 0.45);
+}
+
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 55px;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+.pagination button {
+  min-width: 48px;
+
+  height: 48px;
+
+  border: none;
+
+  outline: none;
+
+  border-radius: 12px;
+
+  background: rgba(15, 23, 42, 0.8);
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+.pagination button:hover {
+  background: linear-gradient(
+    135deg,
+    #3498db,
+    #6dd5fa
+  );
+
+  transform: translateY(-2px);
+}
+
+.pagination button.active {
+  background: linear-gradient(
+    135deg,
+    #3498db,
+    #6dd5fa,
+    #2980b9
+  );
+
+  box-shadow:
+    0 6px 15px
+      rgba(52, 152, 219, 0.35),
+    0 0 15px
+      rgba(109, 213, 250, 0.35);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .header-section h1 {
+    font-size: 42px;
+  }
+
+  .list-container {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .store-wrapper {
+    padding: 30px 20px;
+  }
+
+  .header-section h1 {
+    font-size: 34px;
+  }
+
+  .img-box {
+    height: 220px;
+  }
+
+  .card-info h3 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-section h1 {
+    font-size: 28px;
+  }
+
+  .list-container {
+    grid-template-columns: 1fr;
+  }
+
+  .img-box {
+    height: 100px;
+  }
+
+  .pagination {
+    gap: 8px;
+  }
+
+  .pagination button {
+    min-width: 42px;
+
+    height: 42px;
+  }
+}

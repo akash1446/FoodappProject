@@ -1,0 +1,656 @@
+/* =========================================================
+   GOOGLE FONT
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background: #000;
+  color: white;
+}
+
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
+
+.main-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* VIDEO */
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DARK OVERLAY */
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.78),
+    rgba(0, 0, 0, 0.45)
+  );
+  padding: 25px 45px;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* LOGO */
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+.logo span {
+  color: #ffb703;
+  text-shadow: 0 0 12px rgba(255, 183, 3, 0.8);
+}
+
+/* RIGHT SIDE */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* SEARCH BOX */
+
+.search-box {
+  width: 270px;
+  padding: 13px 18px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  backdrop-filter: blur(10px);
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+
+.search-box:focus {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+}
+
+.search-box::placeholder {
+  color: #ddd;
+}
+
+/* BUTTON */
+
+.menu-trigger {
+  padding: 13px 24px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff7b00, #ffb703);
+  color: white;
+  font-weight: 700;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.3);
+}
+
+.menu-trigger:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 28px rgba(255, 183, 3, 0.5);
+}
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-center-content {
+  width: 100%;
+  max-width: 850px;
+  margin-top: 110px;
+}
+
+/* BADGE */
+
+.hero-badge {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* TITLE */
+
+.main-title {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  font-weight: 900;
+  margin-bottom: 28px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.main-title span {
+  color: #ffb703;
+  text-shadow: 0 0 20px rgba(255, 183, 3, 0.7);
+}
+
+/* SUB TEXT */
+
+.sub-caption {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  max-width: 720px;
+  color: #e2e2e2;
+}
+
+/* =========================================================
+   PREMIUM FOOD TEXT ANIMATION
+========================================================= */
+
+.food-text-animation {
+  position: relative;
+  margin-top: 35px;
+  height: 65px;
+  overflow: hidden;
+}
+
+.food-text-animation span {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: translateY(100%);
+  animation: premiumFoodText 24s infinite;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+}
+
+/* DIFFERENT COLORS */
+
+.food-text-animation span:nth-child(1) {
+  animation-delay: 0s;
+  color: #ffb703;
+}
+
+.food-text-animation span:nth-child(2) {
+  animation-delay: 3s;
+  color: #80ed99;
+}
+
+.food-text-animation span:nth-child(3) {
+  animation-delay: 6s;
+  color: #ffadad;
+}
+
+.food-text-animation span:nth-child(4) {
+  animation-delay: 9s;
+  color: #90e0ef;
+}
+
+.food-text-animation span:nth-child(5) {
+  animation-delay: 12s;
+  color: #ffd166;
+}
+
+.food-text-animation span:nth-child(6) {
+  animation-delay: 15s;
+  color: #f72585;
+}
+
+.food-text-animation span:nth-child(7) {
+  animation-delay: 18s;
+  color: #4cc9f0;
+}
+
+.food-text-animation span:nth-child(8) {
+  animation-delay: 21s;
+  color: #06d6a0;
+}
+
+/* ANIMATION */
+
+@keyframes premiumFoodText {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.7);
+    filter: blur(10px);
+  }
+
+  5% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateY(-100%) scale(1.1);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* PAUSE ON HOVER */
+
+.food-text-animation:hover span {
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.cta-main,
+.secondary-btn {
+  padding: 15px 32px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.cta-main {
+  background: linear-gradient(135deg, #ff7b00, #ffb703);
+  color: white;
+  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.35);
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.cta-main:hover,
+.secondary-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.hero-stats {
+  margin-top: 45px;
+}
+
+.stat-card {
+  width: 250px;
+  padding: 25px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.stat-card h2 {
+  font-size: 2.6rem;
+  color: #ffb703;
+}
+
+.stat-card p {
+  margin-top: 10px;
+  color: #ddd;
+}
+
+/* =========================================================
+   FOOD MARQUEE
+========================================================= */
+
+.marquee-wrapper {
+  margin-top: 80px;
+  overflow: hidden;
+}
+
+.food-scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.food-scroll-track {
+  display: flex;
+  width: max-content;
+  animation: scrollFood 25s linear infinite;
+}
+
+.food-circle-card {
+  min-width: 190px;
+  margin-right: 28px;
+  text-align: center;
+}
+
+.food-circle-card img {
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  transition: 0.4s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* IMAGE HOVER */
+
+.food-circle-card img:hover {
+  transform: scale(1.08) rotate(3deg);
+  border-color: #ffb703;
+  box-shadow: 0 0 25px rgba(255, 183, 3, 0.8);
+}
+
+.food-circle-card span {
+  display: block;
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* SCROLL */
+
+@keyframes scrollFood {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   POPUP MENU
+========================================================= */
+
+.full-screen-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.menu-card {
+  width: 90%;
+  max-width: 900px;
+  background: #101010;
+  border-radius: 30px;
+  padding: 50px;
+  position: relative;
+  animation: popupShow 0.4s ease;
+}
+
+@keyframes popupShow {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-x {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.popup-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.popup-subtitle {
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+/* CATEGORY GRID */
+
+.cat-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.option {
+  background: #1b1b1b;
+  border-radius: 25px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.option:hover {
+  transform: translateY(-8px);
+  background: #232323;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.premium-footer {
+  background: #050505;
+  padding: 75px 40px 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 40px;
+}
+
+.footer-box h3,
+.footer-logo {
+  margin-bottom: 18px;
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.footer-logo span {
+  color: #ffb703;
+}
+
+.footer-box p {
+  margin-bottom: 12px;
+  color: #ccc;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-box p:hover {
+  color: #ffb703;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  color: #888;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 992px) {
+  .main-title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-right {
+    width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: 3rem;
+  }
+
+  .sub-caption {
+    font-size: 1rem;
+  }
+
+  .food-text-animation {
+    height: 55px;
+  }
+
+  .food-text-animation span {
+    font-size: 1rem;
+  }
+
+  .food-circle-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .food-circle-card {
+    min-width: 140px;
+  }
+
+  .menu-card {
+    padding: 30px 20px;
+  }
+
+  .popup-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .cta-main,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .food-text-animation span {
+    font-size: 0.9rem;
+  }
+}
