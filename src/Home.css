@@ -65,8 +65,8 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.78),
-    rgba(0, 0, 0, 0.45)
+    rgba(0, 0, 0, 0.82),
+    rgba(0, 0, 0, 0.48)
   );
   padding: 25px 45px;
 }
@@ -86,21 +86,21 @@ body {
 /* LOGO */
 
 .logo {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 900;
   color: #fff;
   letter-spacing: 2px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
 .logo:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .logo span {
-  color: #ffb703;
-  text-shadow: 0 0 12px rgba(255, 183, 3, 0.8);
+  color: #ff006e;
+  text-shadow: 0 0 18px rgba(255, 0, 110, 0.8);
 }
 
 /* RIGHT SIDE */
@@ -112,11 +112,11 @@ body {
   flex-wrap: wrap;
 }
 
-/* SEARCH BOX */
+/* SEARCH */
 
 .search-box {
-  width: 270px;
-  padding: 13px 18px;
+  width: 280px;
+  padding: 14px 20px;
   border-radius: 40px;
   border: none;
   outline: none;
@@ -124,12 +124,12 @@ body {
   color: white;
   backdrop-filter: blur(10px);
   font-size: 0.95rem;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
 .search-box:focus {
   background: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+  box-shadow: 0 0 18px rgba(255, 0, 110, 0.7);
 }
 
 .search-box::placeholder {
@@ -139,20 +139,20 @@ body {
 /* BUTTON */
 
 .menu-trigger {
-  padding: 13px 24px;
+  padding: 14px 28px;
   border-radius: 40px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(135deg, #ff7b00, #ffb703);
+  background: linear-gradient(135deg, #ff006e, #8338ec);
   color: white;
   font-weight: 700;
-  transition: 0.3s ease;
-  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.3);
+  transition: 0.4s ease;
+  box-shadow: 0 12px 30px rgba(255, 0, 110, 0.35);
 }
 
 .menu-trigger:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 12px 28px rgba(255, 183, 3, 0.5);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 0, 110, 0.6);
 }
 
 /* =========================================================
@@ -169,7 +169,7 @@ body {
 
 .hero-badge {
   display: inline-block;
-  padding: 12px 22px;
+  padding: 12px 24px;
   border-radius: 40px;
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
@@ -177,6 +177,7 @@ body {
   font-size: 0.95rem;
   margin-bottom: 28px;
   border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: pulseBadge 3s infinite;
 }
 
 /* TITLE */
@@ -187,14 +188,15 @@ body {
   font-weight: 900;
   margin-bottom: 28px;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  animation: slideUp 1s ease;
 }
 
 .main-title span {
-  color: #ffb703;
-  text-shadow: 0 0 20px rgba(255, 183, 3, 0.7);
+  color: #ff006e;
+  text-shadow: 0 0 25px rgba(255, 0, 110, 0.8);
 }
 
-/* SUB TEXT */
+/* SUBTEXT */
 
 .sub-caption {
   font-size: 1.1rem;
@@ -204,13 +206,13 @@ body {
 }
 
 /* =========================================================
-   PREMIUM FOOD TEXT ANIMATION
+   NEW PREMIUM FOOD ANIMATION
 ========================================================= */
 
 .food-text-animation {
   position: relative;
   margin-top: 35px;
-  height: 65px;
+  height: 70px;
   overflow: hidden;
 }
 
@@ -220,82 +222,82 @@ body {
   left: 0;
   top: 0;
   opacity: 0;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 2px;
   text-transform: uppercase;
   transform: translateY(100%);
-  animation: premiumFoodText 24s infinite;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+  animation: luxuryFoodSlider 24s infinite;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.3);
 }
 
-/* DIFFERENT COLORS */
+/* COLORS */
 
 .food-text-animation span:nth-child(1) {
   animation-delay: 0s;
-  color: #ffb703;
+  color: #ff006e;
 }
 
 .food-text-animation span:nth-child(2) {
   animation-delay: 3s;
-  color: #80ed99;
+  color: #3a86ff;
 }
 
 .food-text-animation span:nth-child(3) {
   animation-delay: 6s;
-  color: #ffadad;
+  color: #ffbe0b;
 }
 
 .food-text-animation span:nth-child(4) {
   animation-delay: 9s;
-  color: #90e0ef;
+  color: #8338ec;
 }
 
 .food-text-animation span:nth-child(5) {
   animation-delay: 12s;
-  color: #ffd166;
+  color: #06d6a0;
 }
 
 .food-text-animation span:nth-child(6) {
   animation-delay: 15s;
-  color: #f72585;
+  color: #fb5607;
 }
 
 .food-text-animation span:nth-child(7) {
   animation-delay: 18s;
-  color: #4cc9f0;
+  color: #00f5d4;
 }
 
 .food-text-animation span:nth-child(8) {
   animation-delay: 21s;
-  color: #06d6a0;
+  color: #ff4d6d;
 }
 
 /* ANIMATION */
 
-@keyframes premiumFoodText {
+@keyframes luxuryFoodSlider {
   0% {
     opacity: 0;
-    transform: translateY(100%) scale(0.7);
-    filter: blur(10px);
+    transform: translateY(120%) scale(0.6) rotateX(90deg);
+    filter: blur(12px);
   }
 
-  5% {
+  6% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0);
+  }
+
+  18% {
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0);
   }
 
-  20% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-
-  25% {
+  24% {
     opacity: 0;
-    transform: translateY(-100%) scale(1.1);
-    filter: blur(10px);
+    transform: translateY(-120%) scale(1.15) rotateX(-90deg);
+    filter: blur(12px);
   }
 
   100% {
@@ -303,14 +305,39 @@ body {
   }
 }
 
-/* PAUSE ON HOVER */
+/* GLOW LINE */
 
-.food-text-animation:hover span {
-  animation-play-state: paused;
+.food-text-animation span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 3px;
+  border-radius: 10px;
+  background: currentColor;
+  animation: glowLine 3s infinite;
+}
+
+@keyframes glowLine {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+
+  40% {
+    width: 80%;
+    opacity: 1;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
 }
 
 /* =========================================================
-   HERO BUTTONS
+   BUTTONS
 ========================================================= */
 
 .hero-actions {
@@ -328,13 +355,13 @@ body {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
 .cta-main {
-  background: linear-gradient(135deg, #ff7b00, #ffb703);
+  background: linear-gradient(135deg, #ff006e, #8338ec);
   color: white;
-  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.35);
+  box-shadow: 0 10px 25px rgba(255, 0, 110, 0.35);
 }
 
 .secondary-btn {
@@ -367,8 +394,8 @@ body {
 }
 
 .stat-card h2 {
-  font-size: 2.6rem;
-  color: #ffb703;
+  font-size: 2.8rem;
+  color: #ff006e;
 }
 
 .stat-card p {
@@ -412,12 +439,10 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
-/* IMAGE HOVER */
-
 .food-circle-card img:hover {
-  transform: scale(1.08) rotate(3deg);
-  border-color: #ffb703;
-  box-shadow: 0 0 25px rgba(255, 183, 3, 0.8);
+  transform: scale(1.08) rotate(4deg);
+  border-color: #ff006e;
+  box-shadow: 0 0 28px rgba(255, 0, 110, 0.9);
 }
 
 .food-circle-card span {
@@ -427,7 +452,7 @@ body {
   font-weight: 700;
 }
 
-/* SCROLL */
+/* MARQUEE ANIMATION */
 
 @keyframes scrollFood {
   from {
@@ -446,7 +471,7 @@ body {
 .full-screen-menu {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.82);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -460,7 +485,7 @@ body {
   border-radius: 30px;
   padding: 50px;
   position: relative;
-  animation: popupShow 0.4s ease;
+  animation: popupShow 0.5s ease;
 }
 
 @keyframes popupShow {
@@ -488,7 +513,7 @@ body {
 
 .popup-title {
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
@@ -516,8 +541,9 @@ body {
 }
 
 .option:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.03);
   background: #232323;
+  box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
 }
 
 .icon {
@@ -551,7 +577,7 @@ body {
 }
 
 .footer-logo span {
-  color: #ffb703;
+  color: #ff006e;
 }
 
 .footer-box p {
@@ -562,7 +588,7 @@ body {
 }
 
 .footer-box p:hover {
-  color: #ffb703;
+  color: #ff006e;
   transform: translateX(4px);
 }
 
@@ -572,6 +598,36 @@ body {
   padding-top: 20px;
   border-top: 1px solid #222;
   color: #888;
+}
+
+/* =========================================================
+   EXTRA ANIMATIONS
+========================================================= */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBadge {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* =========================================================
@@ -651,6 +707,6 @@ body {
   }
 
   .food-text-animation span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }

@@ -23,7 +23,7 @@ function Order() {
   console.log("Orders:", orders);
 
   // =========================
-  // REMOVE EMPTY / INVALID ORDERS
+  // VALID ORDERS
   // =========================
 
   const validOrders = orders.filter(
@@ -69,10 +69,30 @@ function Order() {
 
   return (
     <div className="orders-page">
-      {/* TITLE */}
+      {/* =========================
+          FLOATING BACKGROUND
+      ========================= */}
+
+      <div className="floating-bg">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* =========================
+          TITLE SECTION
+      ========================= */}
 
       <div className="orders-top">
-        <h1 className="orders-title">Your Order History</h1>
+        <div>
+          <h1 className="orders-title">Your Order History</h1>
+
+          <p className="orders-subtitle">
+            Track your recent purchases and manage your orders
+          </p>
+        </div>
 
         {validOrders.length > 0 && (
           <button className="clear-orders-btn" onClick={handleClearOrders}>
@@ -81,35 +101,51 @@ function Order() {
         )}
       </div>
 
-      {/* VALID ORDERS */}
+      {/* =========================
+          ORDER LIST
+      ========================= */}
 
       {validOrders.length > 0 ? (
         <ol className="orders-list">
           {validOrders.map((order, orderIndex) => (
             <li className="order-card" key={order.orderId || orderIndex}>
-              {/* ORDER HEADER */}
+              {/* =========================
+                  TOP BADGE
+              ========================= */}
+
+              <div className="order-badge">#{orderIndex + 1}</div>
+
+              {/* =========================
+                  ORDER HEADER
+              ========================= */}
 
               <div className="order-header">
-                <div>
-                  <p className="order-id">Order ID: {order.orderId}</p>
+                <div className="order-left">
+                  <p className="order-id">
+                    Order ID :<span> {order.orderId}</span>
+                  </p>
 
-                  <p className="order-date">{order.date}</p>
+                  <p className="order-date">
+                    📅 {order.date || "No Date Available"}
+                  </p>
 
-                  {/* ORDER STATUS */}
+                  {/* STATUS */}
 
                   <p
                     className={`order-status ${
                       order.status?.toLowerCase() || "pending"
                     }`}
                   >
-                    Status: {order.status || "Pending"}
+                    {order.status || "Pending"}
                   </p>
                 </div>
 
-                {/* BUTTONS */}
+                {/* =========================
+                    BUTTONS
+                ========================= */}
 
                 <div className="order-buttons">
-                  {/* CONFIRM BUTTON */}
+                  {/* CONFIRM */}
 
                   <button
                     className="confirm-order-btn"
@@ -118,7 +154,7 @@ function Order() {
                     Confirm
                   </button>
 
-                  {/* CANCEL BUTTON */}
+                  {/* CANCEL */}
 
                   <button
                     className="cancel-order-btn"
@@ -127,7 +163,7 @@ function Order() {
                     Cancel
                   </button>
 
-                  {/* REMOVE BUTTON */}
+                  {/* REMOVE */}
 
                   <button
                     className="remove-order-btn"
@@ -138,56 +174,78 @@ function Order() {
                 </div>
               </div>
 
-              {/* ORDER ITEMS */}
+              {/* =========================
+                  ITEMS
+              ========================= */}
 
               <ul className="order-items">
                 {order.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="order-item-card">
                     {/* IMAGE */}
 
-                    <img
-                      src={
-                        item.imageUrl ||
-                        "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"
-                      }
-                      alt={item.name}
-                      className="order-item-image"
-                      onError={(e) => {
-                        e.target.src =
-                          "https://cdn-icons-png.flaticon.com/512/1046/1046784.png";
-                      }}
-                    />
+                    <div className="image-wrapper">
+                      <img
+                        src={
+                          item.imageUrl ||
+                          "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"
+                        }
+                        alt={item.name}
+                        className="order-item-image"
+                        onError={(e) => {
+                          e.target.src =
+                            "https://cdn-icons-png.flaticon.com/512/1046/1046784.png";
+                        }}
+                      />
+                    </div>
 
-                    {/* ITEM INFO */}
+                    {/* INFO */}
 
                     <div className="order-item-info">
                       <h3>{item.name}</h3>
 
-                      <p>Price: ₹{item.price}</p>
+                      <p>
+                        Price :<span> ₹{item.price}</span>
+                      </p>
 
-                      <p>Quantity: {item.quantity}</p>
+                      <p>
+                        Quantity :<span> {item.quantity}</span>
+                      </p>
 
                       <p className="item-total">
-                        Total: ₹{(item.price * item.quantity).toFixed(2)}
+                        Total :
+                        <span>₹{(item.price * item.quantity).toFixed(2)}</span>
                       </p>
                     </div>
                   </li>
                 ))}
               </ul>
 
-              {/* TOTAL */}
+              {/* =========================
+                  FOOTER
+              ========================= */}
 
-              <p className="order-total">
-                Total Amount: ₹
-                {order.totalPrice
-                  ? Number(order.totalPrice).toFixed(2)
-                  : "0.00"}
-              </p>
+              <div className="order-footer">
+                <p className="order-total">
+                  Total Amount :
+                  <span>
+                    ₹
+                    {order.totalPrice
+                      ? Number(order.totalPrice).toFixed(2)
+                      : "0.00"}
+                  </span>
+                </p>
+              </div>
             </li>
           ))}
         </ol>
       ) : (
-        <p className="empty-orders">No Orders Found</p>
+        <div className="empty-orders-container">
+          <div className="empty-animation">🛒</div>
+
+          <h2 className="empty-orders">No Orders Found</h2>
+
+          <p className="empty-text">Your ordered products will appear here</p>
+        </div>
       )}
     </div>
   );
