@@ -51,7 +51,6 @@ function Cart() {
     return cartItems.reduce(
       (total, item) =>
         total + Number(item.price || 0) * Number(item.quantity || 0),
-
       0,
     );
   }, [cartItems]);
@@ -77,17 +76,43 @@ function Cart() {
       return;
     }
 
-    dispatch(applyCoupon(coupon));
+    // VALID COUPONS
+    const validCoupons = [
+      "SAVE10",
+      "SAVE20",
+      "SAVE30",
+      "WELCOME5",
+      "WELCOME20",
+      "WELCOME30",
+      "Festive25"
+    ];
+
+    // INVALID COUPON
+    if (!validCoupons.includes(coupon.toUpperCase())) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Coupon ❌",
+        text: `${coupon} is not a valid coupon code`,
+        confirmButtonColor: "#ff4b4b",
+      });
+
+      toast.error("Invalid coupon code");
+
+      return;
+    }
+
+    // APPLY VALID COUPON
+    dispatch(applyCoupon(coupon.toUpperCase()));
 
     Swal.fire({
       icon: "success",
       title: "Coupon Applied 🎉",
-      text: `${coupon} applied successfully`,
+      text: `${coupon.toUpperCase()} applied successfully`,
       timer: 1500,
       showConfirmButton: false,
     });
 
-    toast.success(`Coupon ${coupon} applied`);
+    toast.success(`Coupon ${coupon.toUpperCase()} applied`);
   };
 
   /* =========================
