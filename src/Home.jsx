@@ -135,7 +135,6 @@ function Home() {
               <span>🍱 Premium Quality Restaurant Meals</span>
               <span>🔥 Taste That Makes You Happy</span>
               <span>🚀 Fast Delivery Fresh Food</span>
-              <span>❤️ Made With Love & Freshness</span>
             </div>
 
             <div className="hero-actions">
