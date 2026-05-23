@@ -130,7 +130,7 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
       <div className="layout">
         <main className="content">
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/veg" element={<Veg />} />
 
@@ -142,7 +142,7 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
 
             <Route path="/cart" element={<Cart />} />
 
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
 
             <Route path="/register" element={<Register />} />
 
