@@ -52,7 +52,7 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
         {/* NAVIGATION */}
 
         <div className="nav-links">
-          <Link to="/home">
+          <Link to="/">
             <i className="fa-solid fa-house"></i>
             Home
           </Link>
@@ -111,7 +111,7 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
                 <button onClick={Logout}>Logout</button>
               </>
             ) : (
-              <Link to="/" className="login-btn">
+              <Link to="/login" className="login-btn">
                 <i className="fa-solid fa-right-to-bracket"></i>
                 Login
               </Link>
