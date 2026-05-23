@@ -5,52 +5,92 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Home.css";
 
-/* FOOD ITEMS DATA */
+/* ================= FOOD ITEMS DATA ================= */
+
 const items = [
+  /* VEG ITEMS */
+
   { img: "/Images/VegItems/masla.jpg", name: "Masala Dosa" },
+
   { img: "/Images/VegItems/burger.jpg", name: "Gourmet Burger" },
+
   { img: "/Images/VegItems/Pasta.jpg", name: "Italian Pasta" },
+
   { img: "/Images/VegItems/juice.jpg", name: "Fresh Juice" },
+
   { img: "/Images/VegItems/Banana.jpg", name: "Organic Banana" },
+
+  /* NON VEG ITEMS */
+
   {
     img: "/Images/NonVegItems/ChickenBiryani.jpg",
     name: "Chicken Biryani",
   },
-  { img: "/Images/NonVegItems/FishFry.jpg", name: "Crispy Fish" },
-  { img: "/Images/MilkItems/shake.jpg", name: "Classic Shake" },
+
+  {
+    img: "/Images/NonVegItems/FishFry.jpg",
+    name: "Crispy Fish",
+  },
+
+  /* MILK ITEMS */
+
+  {
+    img: "/Images/MilkItems/shake.jpg",
+    name: "Classic Shake",
+  },
+
+  /* CHOCOLATE ITEMS */
+
+  {
+    img: "/Images/Chocolate/dairymilk.jpg",
+    name: "Dairy Milk",
+  },
 ];
 
 function Home() {
   const navigate = useNavigate();
+
   const [showMenu, setShowMenu] = useState(false);
+
   const [search, setSearch] = useState("");
 
-  /* SEARCH FILTER */
+  /* ================= SEARCH FILTER ================= */
+
   const filteredItems = items.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase()),
   );
 
-  /* OPEN MENU ALERT */
+  /* ================= OPEN MENU ALERT ================= */
+
   const handleExploreClick = () => {
     Swal.fire({
       title: "🍽️ Welcome To FoodieZone",
+
       html: `
         <p style="font-size:16px; margin: 0;">
           Discover fresh and delicious meals crafted specially for you.
         </p>
+
         <p style="margin-top:12px; margin-bottom: 0; color:#27ae60; font-weight:600;">
           Choose your favorite category and start ordering.
         </p>
       `,
+
       icon: "success",
+
       showCancelButton: true,
+
       confirmButtonColor: "#27ae60",
+
       cancelButtonColor: "#e74c3c",
+
       confirmButtonText: "Explore Now",
+
       cancelButtonText: "Maybe Later",
     }).then((result) => {
       if (result.isConfirmed) {
         setShowMenu(true);
+
         toast.success("Menu Opened Successfully 🍔");
       } else {
         toast.info("See You Again 👋");
@@ -60,12 +100,15 @@ function Home() {
 
   return (
     <div className="main-wrapper">
-      {/* TOAST CONTAINER */}
+      {/* ================= TOAST ================= */}
+
       <ToastContainer position="top-right" autoClose={2500} />
 
-      {/* HERO SECTION */}
+      {/* ================= HERO SECTION ================= */}
+
       <section className="hero-viewport">
-        {/* VIDEO BACKGROUND */}
+        {/* ================= VIDEO BACKGROUND ================= */}
+
         <video
           autoPlay
           loop
@@ -77,10 +120,14 @@ function Home() {
           <source src="/Images/Videos/animation.mp4" type="video/mp4" />
         </video>
 
-        {/* HERO OVERLAY */}
+        {/* ================= OVERLAY ================= */}
+
         <div className="hero-overlay">
-          {/* NAVBAR */}
+          {/* ================= NAVBAR ================= */}
+
           <nav className="top-nav">
+            {/* ================= LOGO ================= */}
+
             <div
               className="logo"
               onClick={() => navigate("/")}
@@ -88,6 +135,8 @@ function Home() {
             >
               FOODIE<span>ZONE</span>
             </div>
+
+            {/* ================= SEARCH + BUTTON ================= */}
 
             <div className="nav-right">
               <input
@@ -104,7 +153,8 @@ function Home() {
             </div>
           </nav>
 
-          {/* HERO CONTENT */}
+          {/* ================= HERO CONTENT ================= */}
+
           <div className="hero-center-content">
             <div className="hero-badge">
               🍔 Fresh Food • Fast Delivery • Premium Quality
@@ -121,21 +171,25 @@ function Home() {
               unforgettable taste.
             </p>
 
-            {/* FOOD TEXT ANIMATION */}
+            {/* ================= TEXT ANIMATION ================= */}
+
             <div className="food-text-animation">
               <span>🍔 Food is Tasty</span>
+
               <span>🥗 Food is Healthy</span>
+
               <span>🍕 Fresh & Delicious</span>
+
               <span>🥤 Feel the Real Taste</span>
+
               <span>🍱 Premium Quality Meals</span>
-              <span>🍔 Hot & Crispy Delicious Food</span>
-              <span>🥗 Healthy Food Healthy Life</span>
-              <span>🍕 Fresh Taste Every Single Bite</span>
-              <span>🥤 Refresh Your Mood With Drinks</span>
-              <span>🍱 Premium Quality Restaurant Meals</span>
+
               <span>🔥 Taste That Makes You Happy</span>
+
               <span>🚀 Fast Delivery Fresh Food</span>
             </div>
+
+            {/* ================= BUTTONS ================= */}
 
             <div className="hero-actions">
               <button className="cta-main" onClick={handleExploreClick}>
@@ -150,22 +204,59 @@ function Home() {
               </button>
             </div>
 
+            {/* ================= STATS ================= */}
+
             <div className="hero-stats">
               <div className="stat-card">
                 <h2>24/7</h2>
+
                 <p>Fast Delivery Service</p>
               </div>
             </div>
           </div>
 
-          {/* FOOD AUTO SCROLL MARQUEE */}
+          {/* ================= FOOD SCROLL ================= */}
+
           <div className="marquee-wrapper">
             {filteredItems.length > 0 ? (
               <div className="food-scroll-wrapper">
                 <div className="food-scroll-track">
                   {[...filteredItems, ...filteredItems].map((item, i) => (
-                    <div className="food-circle-card" key={`${item.name}-${i}`}>
+                    <div
+                      className="food-circle-card"
+                      key={`${item.name}-${i}`}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        /* VEG PAGE */
+
+                        if (
+                          item.name === "Masala Dosa" ||
+                          item.name === "Gourmet Burger" ||
+                          item.name === "Italian Pasta" ||
+                          item.name === "Fresh Juice" ||
+                          item.name === "Organic Banana"
+                        ) {
+                          navigate("/veg");
+                        } else if (
+
+                        /* NON VEG PAGE */
+                          item.name === "Chicken Biryani" ||
+                          item.name === "Crispy Fish"
+                        ) {
+                          navigate("/nonveg");
+                        } else if (item.name === "Classic Shake") {
+
+                        /* MILK PAGE */
+                          navigate("/milk");
+                        } else if (item.name === "Dairy Milk") {
+
+                        /* CHOCOLATE PAGE */
+                          navigate("/chocolate");
+                        }
+                      }}
+                    >
                       <img src={item.img} alt={item.name} />
+
                       <span>{item.name}</span>
                     </div>
                   ))}
@@ -178,7 +269,8 @@ function Home() {
         </div>
       </section>
 
-      {/* POPUP MODAL MENU */}
+      {/* ================= POPUP MENU ================= */}
+
       {showMenu && (
         <div className="full-screen-menu" onClick={() => setShowMenu(false)}>
           <div className="menu-card" onClick={(e) => e.stopPropagation()}>
@@ -195,21 +287,25 @@ function Home() {
             <div className="cat-options">
               <div className="option" onClick={() => navigate("/veg")}>
                 <div className="icon">🥦</div>
+
                 <h3>Vegetarian</h3>
               </div>
 
               <div className="option" onClick={() => navigate("/nonveg")}>
                 <div className="icon">🍗</div>
+
                 <h3>Non-Veg</h3>
               </div>
 
               <div className="option" onClick={() => navigate("/milk")}>
                 <div className="icon">🥛</div>
+
                 <h3>Dairy & Milk</h3>
               </div>
 
               <div className="option" onClick={() => navigate("/chocolate")}>
                 <div className="icon">🍫</div>
+
                 <h3>Chocolates</h3>
               </div>
             </div>
@@ -217,9 +313,12 @@ function Home() {
         </div>
       )}
 
-      {/* FOOTER */}
+      {/* ================= FOOTER ================= */}
+
       <footer className="premium-footer">
         <div className="footer-grid">
+          {/* ================= FOOTER LOGO ================= */}
+
           <div className="footer-box">
             <h2 className="footer-logo">
               FOODIE<span>ZONE</span>
@@ -231,13 +330,21 @@ function Home() {
             </p>
           </div>
 
+          {/* ================= CONTACT ================= */}
+
           <div className="footer-box">
             <h3>Contact</h3>
+
             <p>👤 Akash Guduri</p>
+
             <p>📞 +91 8125561511</p>
+
             <p>📧 akashguduri2@gmail.com</p>
+
             <p>📍 Hyderabad, Telangana, India</p>
           </div>
+
+          {/* ================= CATEGORIES ================= */}
 
           <div className="footer-box">
             <h3>Categories</h3>
@@ -265,6 +372,8 @@ function Home() {
             </p>
           </div>
 
+          {/* ================= QUICK LINKS ================= */}
+
           <div className="footer-box">
             <h3>Quick Links</h3>
 
@@ -276,10 +385,7 @@ function Home() {
               🛒 Cart
             </p>
 
-            <p
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate("/orders")}
-            >
+            <p style={{ cursor: "pointer" }} onClick={() => navigate("/order")}>
               📦 Orders
             </p>
 
@@ -292,8 +398,10 @@ function Home() {
           </div>
         </div>
 
+        {/* ================= COPYRIGHT ================= */}
+
         <div className="footer-bottom">
-          &copy; 2026 FOODIEZONE &bull; Designed By Akash Guduri
+          &copy; 2026 FOODIEZONE • Designed By Akash Guduri
         </div>
       </footer>
     </div>

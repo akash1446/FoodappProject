@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./App.css";
 
@@ -15,41 +16,44 @@ import Order from "./Order";
 import Aboutus from "./Aboutus";
 import Contactus from "./Contactus";
 
-import { useSelector } from "react-redux";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
-  // REDUX CART
+  // ================= REDUX CART =================
 
   const cartItems = useSelector((state) => state.cart || []);
 
-  // TOTAL QUANTITY
+  // ================= TOTAL CART QUANTITY =================
 
   const cartQuantity = cartItems.reduce(
     (total, item) => total + (item.quantity || 0),
     0,
   );
-let user = JSON.parse(localStorage.getItem("loggedInUser"));
-  let Logout = ()=>{
+
+  // ================= USER LOGIN =================
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  // ================= LOGOUT FUNCTION =================
+
+  const Logout = () => {
     localStorage.removeItem("loggedInUser");
-    
     window.location.reload();
-  }
+  };
 
   return (
     <BrowserRouter>
       {/* ================= NAVBAR ================= */}
 
       <nav className="navbar">
-        {/* LOGO */}
+        {/* ================= LOGO ================= */}
 
         <h2 className="logo">
           <i className="fa-solid fa-utensils"></i>
           FOODIE<span>ZONE</span>
         </h2>
 
-        {/* NAVIGATION */}
+        {/* ================= NAVIGATION LINKS ================= */}
 
         <div className="nav-links">
           <Link to="/">
@@ -92,7 +96,7 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
             Contact
           </Link>
 
-          {/* CART */}
+          {/* ================= CART ================= */}
 
           <Link to="/cart" className="cart-link">
             <i className="fa-solid fa-cart-shopping"></i>
@@ -102,34 +106,44 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
             )}
           </Link>
 
-          {/* AUTH BUTTONS */}
+          {/* ================= AUTH BUTTONS ================= */}
 
           <div className="auth-buttons">
             {user ? (
               <>
-                <span style={{color: "white"}}>Welcome, {user.name}!</span>
-                <button onClick={Logout}>Logout</button>
+                <span style={{ color: "white", marginRight: "10px" }}>
+                  Welcome, {user.name}!
+                </span>
+
+                <button className="logout-btn" onClick={Logout}>
+                  <i className="fa-solid fa-right-from-bracket"></i>
+                  Logout
+                </button>
               </>
             ) : (
-              <Link to="/login" className="login-btn">
-                <i className="fa-solid fa-right-to-bracket"></i>
-                Login
-              </Link>
-            )}
+              <>
+                <Link to="/login" className="login-btn">
+                  <i className="fa-solid fa-right-to-bracket"></i>
+                  Login
+                </Link>
 
-            <Link to="/register" className="register-btn">
-              <i className="fa-solid fa-user-plus"></i>
-              Register
-            </Link>
+                <Link to="/register" className="register-btn">
+                  <i className="fa-solid fa-user-plus"></i>
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
 
-      {/* ================= ROUTES ================= */}
+      {/* ================= MAIN CONTENT ================= */}
 
       <div className="layout">
         <main className="content">
           <Routes>
+            {/* ================= MAIN ROUTES ================= */}
+
             <Route path="/" element={<Home />} />
 
             <Route path="/veg" element={<Veg />} />
@@ -151,6 +165,10 @@ let user = JSON.parse(localStorage.getItem("loggedInUser"));
             <Route path="/about" element={<Aboutus />} />
 
             <Route path="/contact" element={<Contactus />} />
+
+            {/* ================= 404 FALLBACK ================= */}
+
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
       </div>
