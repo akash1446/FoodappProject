@@ -1,12 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// =========================
+// LOAD ORDERS FROM LOCAL STORAGE
+// =========================
+const loadOrdersFromLocalStorage = () => {
+  const data = localStorage.getItem("orders");
+
+  return data ? JSON.parse(data) : [];
+};
+
+// =========================
+// SAVE ORDERS TO LOCAL STORAGE
+// =========================
+const saveOrdersToLocalStorage = (state) => {
+  localStorage.setItem("orders", JSON.stringify(state));
+};
+
+// =========================
+// ORDER SLICE
+// =========================
 const orderSlice = createSlice({
   name: "orders",
 
   // =========================
   // INITIAL STATE
   // =========================
-  initialState: [],
+  initialState: loadOrdersFromLocalStorage(),
 
   reducers: {
     // =========================
@@ -15,8 +34,10 @@ const orderSlice = createSlice({
     addToOrders: (state, action) => {
       state.push({
         ...action.payload,
-        status: "Pending", // Default Status
+        status: "Pending",
       });
+
+      saveOrdersToLocalStorage(state);
     },
 
     // =========================
@@ -28,6 +49,8 @@ const orderSlice = createSlice({
       if (order) {
         order.status = "Confirmed";
       }
+
+      saveOrdersToLocalStorage(state);
     },
 
     // =========================
@@ -39,19 +62,29 @@ const orderSlice = createSlice({
       if (order) {
         order.status = "Cancelled";
       }
+
+      saveOrdersToLocalStorage(state);
     },
 
     // =========================
     // REMOVE SINGLE ORDER
     // =========================
     removeOrder: (state, action) => {
-      return state.filter((order) => order.orderId !== action.payload);
+      const updatedOrders = state.filter(
+        (order) => order.orderId !== action.payload,
+      );
+
+      saveOrdersToLocalStorage(updatedOrders);
+
+      return updatedOrders;
     },
 
     // =========================
     // CLEAR ALL ORDERS
     // =========================
     clearOrders: () => {
+      localStorage.removeItem("orders");
+
       return [];
     },
   },
