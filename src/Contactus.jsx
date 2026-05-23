@@ -48,7 +48,7 @@ function Contactus() {
           </div>
 
           <div className="business-hours">
-            <h3>Business Hours</h3>
+            <h3>Food Opening Hours</h3>
 
             <p>Mon - Sat: 8:59 AM - 9:00 PM</p>
 
