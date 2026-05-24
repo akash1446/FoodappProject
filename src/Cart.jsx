@@ -43,6 +43,15 @@ function Cart() {
 
   const [showEmailInput, setShowEmailInput] = useState(false);
 
+  // CARD DETAILS
+  const [cardName, setCardName] = useState("");
+
+  const [cardNumber, setCardNumber] = useState("");
+
+  const [expiry, setExpiry] = useState("");
+
+  const [cvv, setCvv] = useState("");
+
   /* =========================
      CALCULATIONS
   ========================= */
@@ -76,7 +85,6 @@ function Cart() {
       return;
     }
 
-    // VALID COUPONS
     const validCoupons = [
       "SAVE10",
       "SAVE20",
@@ -84,10 +92,9 @@ function Cart() {
       "WELCOME5",
       "WELCOME20",
       "WELCOME30",
-      "Festive25"
+      "Festive25",
     ];
 
-    // INVALID COUPON
     if (!validCoupons.includes(coupon.toUpperCase())) {
       Swal.fire({
         icon: "error",
@@ -101,7 +108,6 @@ function Cart() {
       return;
     }
 
-    // APPLY VALID COUPON
     dispatch(applyCoupon(coupon.toUpperCase()));
 
     Swal.fire({
@@ -179,6 +185,18 @@ function Cart() {
   ========================= */
 
   const handlePayment = () => {
+    if (paymentMethod === "card") {
+      if (!cardName || !cardNumber || !expiry || !cvv) {
+        Swal.fire({
+          icon: "warning",
+          title: "Incomplete Card Details",
+          text: "Please fill all card details",
+        });
+
+        return;
+      }
+    }
+
     Swal.fire({
       icon: "success",
       title: "Payment Successful 🎉",
@@ -341,10 +359,6 @@ function Cart() {
                     "https://cdn-icons-png.flaticon.com/512/1046/1046784.png"
                   }
                   alt={item.name}
-                  onError={(e) => {
-                    e.target.src =
-                      "https://cdn-icons-png.flaticon.com/512/1046/1046784.png";
-                  }}
                 />
 
                 <div className="cart-info">
@@ -530,6 +544,53 @@ function Cart() {
 
                     <button className="pay-btn" onClick={handlePayment}>
                       Verify & Pay
+                    </button>
+                  </div>
+                )}
+
+                {/* CARD PAYMENT */}
+
+                {paymentMethod === "card" && (
+                  <div className="card-payment-container">
+                    <input
+                      type="text"
+                      placeholder="Card Holder Name"
+                      value={cardName}
+                      onChange={(e) => setCardName(e.target.value)}
+                      className="card-input"
+                    />
+
+                    <input
+                      type="text"
+                      placeholder="Card Number"
+                      maxLength="16"
+                      value={cardNumber}
+                      onChange={(e) => setCardNumber(e.target.value)}
+                      className="card-input"
+                    />
+
+                    <div className="card-row">
+                      <input
+                        type="text"
+                        placeholder="MM/YY"
+                        maxLength="5"
+                        value={expiry}
+                        onChange={(e) => setExpiry(e.target.value)}
+                        className="card-input"
+                      />
+
+                      <input
+                        type="password"
+                        placeholder="CVV"
+                        maxLength="3"
+                        value={cvv}
+                        onChange={(e) => setCvv(e.target.value)}
+                        className="card-input"
+                      />
+                    </div>
+
+                    <button className="pay-btn" onClick={handlePayment}>
+                      Pay ₹{netAmount.toFixed(2)}
                     </button>
                   </div>
                 )}
