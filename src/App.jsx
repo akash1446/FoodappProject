@@ -1,5 +1,13 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 import "./App.css";
@@ -18,31 +26,38 @@ import Contactus from "./Contactus";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-function App() {
+// ================= APP CONTENT =================
+
+function AppContent() {
   // ================= REDUX CART =================
 
-  const cartItems = useSelector((state) => state.cart || []);
+  const cartItems = useSelector((state) => state.cart?.items || []);
 
-  // ================= TOTAL CART QUANTITY =================
+  // ================= CART TOTAL QUANTITY =================
 
   const cartQuantity = cartItems.reduce(
     (total, item) => total + (item.quantity || 0),
     0,
   );
 
-  // ================= USER LOGIN =================
+  // ================= GET USER =================
 
-  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
 
-  // ================= LOGOUT FUNCTION =================
+  // ================= NAVIGATE =================
+
+  const navigate = useNavigate();
+
+  // ================= LOGOUT =================
 
   const Logout = () => {
     localStorage.removeItem("loggedInUser");
-    window.location.reload();
+
+    navigate("/");
   };
 
   return (
-    <BrowserRouter>
+    <>
       {/* ================= NAVBAR ================= */}
 
       <nav className="navbar">
@@ -53,7 +68,7 @@ function App() {
           FOODIE<span>ZONE</span>
         </h2>
 
-        {/* ================= NAVIGATION LINKS ================= */}
+        {/* ================= NAV LINKS ================= */}
 
         <div className="nav-links">
           <Link to="/">
@@ -106,14 +121,12 @@ function App() {
             )}
           </Link>
 
-          {/* ================= AUTH BUTTONS ================= */}
+          {/* ================= AUTH ================= */}
 
           <div className="auth-buttons">
             {user ? (
               <>
-                <span style={{ color: "white", marginRight: "10px" }}>
-                  Welcome, {user.name}!
-                </span>
+                <span className="welcome-text">Welcome, {user.name}!</span>
 
                 <button className="logout-btn" onClick={Logout}>
                   <i className="fa-solid fa-right-from-bracket"></i>
@@ -142,7 +155,7 @@ function App() {
       <div className="layout">
         <main className="content">
           <Routes>
-            {/* ================= MAIN ROUTES ================= */}
+            {/* ================= ROUTES ================= */}
 
             <Route path="/" element={<Home />} />
 
@@ -166,12 +179,22 @@ function App() {
 
             <Route path="/contact" element={<Contactus />} />
 
-            {/* ================= 404 FALLBACK ================= */}
+            {/* ================= DEFAULT ROUTE ================= */}
 
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
       </div>
+    </>
+  );
+}
+
+// ================= MAIN APP =================
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
