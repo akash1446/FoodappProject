@@ -8,7 +8,7 @@ import "./Home.css";
 /* ================= FOOD ITEMS DATA ================= */
 
 const items = [
-  /* VEG ITEMS */
+  /* ================= VEG ITEMS ================= */
 
   { img: "/Images/VegItems/masla.jpg", name: "Masala Dosa" },
 
@@ -20,7 +20,17 @@ const items = [
 
   { img: "/Images/VegItems/Banana.jpg", name: "Organic Banana" },
 
-  /* NON VEG ITEMS */
+  { img: "/Images/VegItems/pizza.jpg", name: "Cheese Pizza" },
+
+  { img: "/Images/VegItems/noodles.jpg", name: "Veg Noodles" },
+
+  { img: "/Images/VegItems/paneer.jpg", name: "Paneer Curry" },
+
+  { img: "/Images/VegItems/salad.jpg", name: "Healthy Salad" },
+
+  { img: "/Images/VegItems/idli.jpg", name: "Soft Idli" },
+
+  /* ================= NON VEG ITEMS ================= */
 
   {
     img: "/Images/NonVegItems/ChickenBiryani.jpg",
@@ -32,18 +42,73 @@ const items = [
     name: "Crispy Fish",
   },
 
-  /* MILK ITEMS */
+  {
+    img: "/Images/NonVegItems/chicken65.jpg",
+    name: "Chicken 65",
+  },
+
+  {
+    img: "/Images/NonVegItems/mutton.jpg",
+    name: "Mutton Curry",
+  },
+
+  {
+    img: "/Images/NonVegItems/prawns.jpg",
+    name: "Prawns Fry",
+  },
+
+  {
+    img: "/Images/NonVegItems/grill.jpg",
+    name: "Grilled Chicken",
+  },
+
+  /* ================= MILK ITEMS ================= */
 
   {
     img: "/Images/MilkItems/shake.jpg",
     name: "Classic Shake",
   },
 
-  /* CHOCOLATE ITEMS */
+  {
+    img: "/Images/MilkItems/icecream.jpg",
+    name: "Vanilla Ice Cream",
+  },
+
+  {
+    img: "/Images/MilkItems/cheese.jpg",
+    name: "Cheese Cubes",
+  },
+
+  {
+    img: "/Images/MilkItems/butter.jpg",
+    name: "Fresh Butter",
+  },
+
+  /* ================= CHOCOLATE ITEMS ================= */
 
   {
     img: "/Images/Chocolate/dairymilk.jpg",
     name: "Dairy Milk",
+  },
+
+  {
+    img: "/Images/Chocolate/kitkat.jpg",
+    name: "KitKat",
+  },
+
+  {
+    img: "/Images/Chocolate/snickers.jpg",
+    name: "Snickers",
+  },
+
+  {
+    img: "/Images/Chocolate/fivestar.jpg",
+    name: "5 Star",
+  },
+
+  {
+    img: "/Images/Chocolate/perk.jpg",
+    name: "Perk",
   },
 ];
 
@@ -227,30 +292,50 @@ function Home() {
                       key={`${item.name}-${i}`}
                       style={{ cursor: "pointer" }}
                       onClick={() => {
-                        /* VEG PAGE */
+                        /* ================= VEG PAGE ================= */
 
                         if (
                           item.name === "Masala Dosa" ||
                           item.name === "Gourmet Burger" ||
                           item.name === "Italian Pasta" ||
                           item.name === "Fresh Juice" ||
-                          item.name === "Organic Banana"
+                          item.name === "Organic Banana" ||
+                          item.name === "Cheese Pizza" ||
+                          item.name === "Veg Noodles" ||
+                          item.name === "Paneer Curry" ||
+                          item.name === "Healthy Salad" ||
+                          item.name === "Soft Idli"
                         ) {
                           navigate("/veg");
                         } else if (
 
-                        /* NON VEG PAGE */
+                        /* ================= NON VEG PAGE ================= */
                           item.name === "Chicken Biryani" ||
-                          item.name === "Crispy Fish"
+                          item.name === "Crispy Fish" ||
+                          item.name === "Chicken 65" ||
+                          item.name === "Mutton Curry" ||
+                          item.name === "Prawns Fry" ||
+                          item.name === "Grilled Chicken"
                         ) {
                           navigate("/nonveg");
-                        } else if (item.name === "Classic Shake") {
+                        } else if (
 
-                        /* MILK PAGE */
+                        /* ================= MILK PAGE ================= */
+                          item.name === "Classic Shake" ||
+                          item.name === "Vanilla Ice Cream" ||
+                          item.name === "Cheese Cubes" ||
+                          item.name === "Fresh Butter"
+                        ) {
                           navigate("/milk");
-                        } else if (item.name === "Dairy Milk") {
+                        } else if (
 
-                        /* CHOCOLATE PAGE */
+                        /* ================= CHOCOLATE PAGE ================= */
+                          item.name === "Dairy Milk" ||
+                          item.name === "KitKat" ||
+                          item.name === "Snickers" ||
+                          item.name === "5 Star" ||
+                          item.name === "Perk"
+                        ) {
                           navigate("/chocolate");
                         }
                       }}
