@@ -28,7 +28,7 @@ const items = [
 
   { img: "/Images/VegItems/salad.jpg", name: "Healthy Salad" },
 
-  { img: "/Images/VegItems/idli.jpg", name: "Soft Idli" },
+  { img: "/Images/VegItems/idly.jpg", name: "Soft Idli" },
 
   /* ================= NON VEG ITEMS ================= */
 
@@ -48,7 +48,7 @@ const items = [
   },
 
   {
-    img: "/Images/NonVegItems/mutton.jpg",
+    img: "/Images/NonVegItems/Mutton.jpg",
     name: "Mutton Curry",
   },
 
