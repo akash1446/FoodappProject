@@ -8,29 +8,10 @@ import "./Home.css";
 /* ================= FOOD ITEMS DATA ================= */
 
 const items = [
-  /* ================= VEG ITEMS ================= */
-
-  { img: "/Images/VegItems/masla.jpg", name: "Masala Dosa" },
-
-  { img: "/Images/VegItems/burger.jpg", name: "Gourmet Burger" },
-
-  { img: "/Images/VegItems/Pasta.jpg", name: "Italian Pasta" },
-
-  { img: "/Images/VegItems/juice.jpg", name: "Fresh Juice" },
-
-  { img: "/Images/VegItems/Banana.jpg", name: "Organic Banana" },
-
-  { img: "/Images/VegItems/pizza.jpg", name: "Cheese Pizza" },
-
-  { img: "/Images/VegItems/noodles.jpg", name: "Veg Noodles" },
-
-  { img: "/Images/VegItems/paneer.jpg", name: "Paneer Curry" },
-
-  { img: "/Images/VegItems/salad.jpg", name: "Healthy Salad" },
-
-  { img: "/Images/VegItems/idly.jpg", name: "Soft Idli" },
-
-  /* ================= NON VEG ITEMS ================= */
+  {
+    img: "/Images/VegItems/masla.jpg",
+    name: "Masala Dosa",
+  },
 
   {
     img: "/Images/NonVegItems/ChickenBiryani.jpg",
@@ -38,77 +19,13 @@ const items = [
   },
 
   {
-    img: "/Images/NonVegItems/FishFry.jpg",
-    name: "Crispy Fish",
-  },
-
-  {
-    img: "/Images/NonVegItems/chicken65.jpg",
-    name: "Chicken 65",
-  },
-
-  {
-    img: "/Images/NonVegItems/Mutton.jpg",
-    name: "Mutton Curry",
-  },
-
-  {
-    img: "/Images/NonVegItems/prawns.jpg",
-    name: "Prawns Fry",
-  },
-
-  {
-    img: "/Images/NonVegItems/grill.jpg",
-    name: "Grilled Chicken",
-  },
-
-  /* ================= MILK ITEMS ================= */
-
-  {
-    img: "/Images/MilkItems/shake.jpg",
-    name: "Classic Shake",
-  },
-
-  {
-    img: "/Images/MilkItems/icecream.jpg",
-    name: "Vanilla Ice Cream",
-  },
-
-  {
-    img: "/Images/MilkItems/cheese.jpg",
-    name: "Cheese Cubes",
-  },
-
-  {
     img: "/Images/MilkItems/butter.jpg",
-    name: "Fresh Butter",
-  },
-
-  /* ================= CHOCOLATE ITEMS ================= */
-
-  {
-    img: "/Images/Chocolate/dairymilk.jpg",
-    name: "Dairy Milk",
+    name: "Butter",
   },
 
   {
-    img: "/Images/Chocolate/kitkat.jpg",
-    name: "KitKat",
-  },
-
-  {
-    img: "/Images/Chocolate/snickers.jpg",
-    name: "Snickers",
-  },
-
-  {
-    img: "/Images/Chocolate/fivestar.jpg",
-    name: "5 Star",
-  },
-
-  {
-    img: "/Images/Chocolate/perk.jpg",
-    name: "Perk",
+    img: "/Images/Chocolate/diamond.jpg",
+    name: "diamond",
   },
 ];
 
@@ -125,40 +42,22 @@ function Home() {
     item.name.toLowerCase().includes(search.toLowerCase()),
   );
 
-  /* ================= OPEN MENU ALERT ================= */
+  /* ================= ALERT ================= */
 
   const handleExploreClick = () => {
     Swal.fire({
-      title: "🍽️ Welcome To FoodieZone",
+      title: "🍔 Welcome To FoodieZone",
 
-      html: `
-        <p style="font-size:16px; margin: 0;">
-          Discover fresh and delicious meals crafted specially for you.
-        </p>
-
-        <p style="margin-top:12px; margin-bottom: 0; color:#27ae60; font-weight:600;">
-          Choose your favorite category and start ordering.
-        </p>
-      `,
+      text: "Explore Delicious Foods",
 
       icon: "success",
 
-      showCancelButton: true,
-
-      confirmButtonColor: "#27ae60",
-
-      cancelButtonColor: "#e74c3c",
-
       confirmButtonText: "Explore Now",
-
-      cancelButtonText: "Maybe Later",
     }).then((result) => {
       if (result.isConfirmed) {
         setShowMenu(true);
 
         toast.success("Menu Opened Successfully 🍔");
-      } else {
-        toast.info("See You Again 👋");
       }
     });
   };
@@ -180,7 +79,7 @@ function Home() {
           muted
           playsInline
           className="hero-video"
-          poster="/Images/VegItems/burger.jpg"
+          poster="/Images/VegItems/masla.jpg"
         >
           <source src="/Images/Videos/animation.mp4" type="video/mp4" />
         </video>
@@ -191,8 +90,6 @@ function Home() {
           {/* ================= NAVBAR ================= */}
 
           <nav className="top-nav">
-            {/* ================= LOGO ================= */}
-
             <div
               className="logo"
               onClick={() => navigate("/")}
@@ -200,8 +97,6 @@ function Home() {
             >
               FOODIE<span>ZONE</span>
             </div>
-
-            {/* ================= SEARCH + BUTTON ================= */}
 
             <div className="nav-right">
               <input
@@ -231,27 +126,19 @@ function Home() {
             </h1>
 
             <p className="sub-caption">
-              Experience restaurant-quality meals made with fresh ingredients
-              and delivered straight to your doorstep with speed, freshness, and
-              unforgettable taste.
+              Experience restaurant-quality meals delivered to your doorstep.
             </p>
 
-            {/* ================= TEXT ANIMATION ================= */}
+            {/* ================= ANIMATION TEXT ================= */}
 
             <div className="food-text-animation">
               <span>🍔 Food is Tasty</span>
 
-              <span>🥗 Food is Healthy</span>
+              <span>🥗 Healthy Food</span>
 
               <span>🍕 Fresh & Delicious</span>
 
-              <span>🥤 Feel the Real Taste</span>
-
-              <span>🍱 Premium Quality Meals</span>
-
-              <span>🔥 Taste That Makes You Happy</span>
-
-              <span>🚀 Fast Delivery Fresh Food</span>
+              <span>🚀 Fast Delivery</span>
             </div>
 
             {/* ================= BUTTONS ================= */}
@@ -268,16 +155,6 @@ function Home() {
                 Learn More
               </button>
             </div>
-
-            {/* ================= STATS ================= */}
-
-            <div className="hero-stats">
-              <div className="stat-card">
-                <h2>24/7</h2>
-
-                <p>Fast Delivery Service</p>
-              </div>
-            </div>
           </div>
 
           {/* ================= FOOD SCROLL ================= */}
@@ -290,52 +167,25 @@ function Home() {
                     <div
                       className="food-circle-card"
                       key={`${item.name}-${i}`}
-                      style={{ cursor: "pointer" }}
+                      style={{
+                        cursor: "pointer",
+                      }}
                       onClick={() => {
                         /* ================= VEG PAGE ================= */
 
-                        if (
-                          item.name === "Masala Dosa" ||
-                          item.name === "Gourmet Burger" ||
-                          item.name === "Italian Pasta" ||
-                          item.name === "Fresh Juice" ||
-                          item.name === "Organic Banana" ||
-                          item.name === "Cheese Pizza" ||
-                          item.name === "Veg Noodles" ||
-                          item.name === "Paneer Curry" ||
-                          item.name === "Healthy Salad" ||
-                          item.name === "Soft Idli"
-                        ) {
+                        if (item.name === "Masala Dosa") {
                           navigate("/veg");
-                        } else if (
+                        } else if (item.name === "Chicken Biryani") {
 
                         /* ================= NON VEG PAGE ================= */
-                          item.name === "Chicken Biryani" ||
-                          item.name === "Crispy Fish" ||
-                          item.name === "Chicken 65" ||
-                          item.name === "Mutton Curry" ||
-                          item.name === "Prawns Fry" ||
-                          item.name === "Grilled Chicken"
-                        ) {
                           navigate("/nonveg");
-                        } else if (
+                        } else if (item.name === "Butter") {
 
                         /* ================= MILK PAGE ================= */
-                          item.name === "Classic Shake" ||
-                          item.name === "Vanilla Ice Cream" ||
-                          item.name === "Cheese Cubes" ||
-                          item.name === "Fresh Butter"
-                        ) {
                           navigate("/milk");
-                        } else if (
+                        } else if (item.name === "diamond") {
 
                         /* ================= CHOCOLATE PAGE ================= */
-                          item.name === "Dairy Milk" ||
-                          item.name === "KitKat" ||
-                          item.name === "Snickers" ||
-                          item.name === "5 Star" ||
-                          item.name === "Perk"
-                        ) {
                           navigate("/chocolate");
                         }
                       }}
@@ -364,10 +214,6 @@ function Home() {
             </button>
 
             <h2 className="popup-title">Select Food Category</h2>
-
-            <p className="popup-subtitle">
-              Explore delicious categories crafted for every taste.
-            </p>
 
             <div className="cat-options">
               <div className="option" onClick={() => navigate("/veg")}>
@@ -402,20 +248,13 @@ function Home() {
 
       <footer className="premium-footer">
         <div className="footer-grid">
-          {/* ================= FOOTER LOGO ================= */}
-
           <div className="footer-box">
             <h2 className="footer-logo">
               FOODIE<span>ZONE</span>
             </h2>
 
-            <p>
-              Premium food delivery experience with freshness, taste, hygiene,
-              and lightning-fast service.
-            </p>
+            <p>Premium food delivery experience with freshness and taste.</p>
           </div>
-
-          {/* ================= CONTACT ================= */}
 
           <div className="footer-box">
             <h3>Contact</h3>
@@ -428,62 +267,7 @@ function Home() {
 
             <p>📍 Hyderabad, Telangana, India</p>
           </div>
-
-          {/* ================= CATEGORIES ================= */}
-
-          <div className="footer-box">
-            <h3>Categories</h3>
-
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/veg")}>
-              🥦 Veg Specials
-            </p>
-
-            <p
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate("/nonveg")}
-            >
-              🍗 Non-Veg Delights
-            </p>
-
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/milk")}>
-              🥛 Dairy Products
-            </p>
-
-            <p
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate("/chocolate")}
-            >
-              🍫 Chocolates
-            </p>
-          </div>
-
-          {/* ================= QUICK LINKS ================= */}
-
-          <div className="footer-box">
-            <h3>Quick Links</h3>
-
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
-              🏠 Home
-            </p>
-
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/cart")}>
-              🛒 Cart
-            </p>
-
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/order")}>
-              📦 Orders
-            </p>
-
-            <p
-              style={{ cursor: "pointer" }}
-              onClick={() => handleExploreClick()}
-            >
-              ⭐ Popular Foods
-            </p>
-          </div>
         </div>
-
-        {/* ================= COPYRIGHT ================= */}
 
         <div className="footer-bottom">
           &copy; 2026 FOODIEZONE • Designed By Akash Guduri

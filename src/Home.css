@@ -1,8 +1,12 @@
-/* ================= GOOGLE FONT ================= */
+/* =========================================================
+   GOOGLE FONT
+========================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
-/* ================= GLOBAL RESET ================= */
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
 
 * {
   margin: 0;
@@ -12,70 +16,88 @@
 }
 
 body {
-  background: #0b1220;
-  color: #fff;
   overflow-x: hidden;
+  background: #000;
+  color: white;
 }
 
-/* ================= HERO WRAPPER ================= */
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
 
 .main-wrapper {
   width: 100%;
   min-height: 100vh;
+  background: #000;
 }
 
-/* ================= VIDEO ================= */
+/* =========================================================
+   HERO SECTION
+========================================================= */
 
 .hero-viewport {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 }
 
+/* =========================================================
+   VIDEO BACKGROUND
+========================================================= */
+
 .hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(40%);
 }
 
-/* ================= OVERLAY ================= */
+/* =========================================================
+   OVERLAY
+========================================================= */
 
 .hero-overlay {
   position: relative;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  flex-direction: column;
+  z-index: 2;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-/* ================= TOP NAV ================= */
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .top-nav {
+  width: 100%;
+  padding: 20px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 20px 50px;
 }
 
-/* LOGO */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
+  color: white;
   cursor: pointer;
 }
 
 .logo span {
-  color: #facc15;
+  color: #ff9800;
 }
 
-/* SEARCH + BUTTON */
+/* =========================================================
+   NAV RIGHT
+========================================================= */
 
 .nav-right {
   display: flex;
@@ -83,329 +105,396 @@ body {
   gap: 15px;
 }
 
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
 .search-box {
-  padding: 10px 15px;
-  border-radius: 10px;
+  width: 260px;
+  padding: 12px 18px;
   border: none;
   outline: none;
-
-  width: 250px;
-}
-
-/* EXPLORE BUTTON */
-
-.menu-trigger {
-  background: #22c55e;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.12);
   color: white;
+  backdrop-filter: blur(10px);
+}
 
-  padding: 10px 16px;
+.search-box::placeholder {
+  color: #ddd;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.menu-trigger,
+.cta-main,
+.secondary-btn {
+  padding: 12px 24px;
   border: none;
-  border-radius: 10px;
-
+  border-radius: 40px;
   cursor: pointer;
-
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-.menu-trigger:hover {
-  background: #16a34a;
-  transform: scale(1.05);
-}
-
-/* ================= HERO CENTER ================= */
-
-.hero-center-content {
-  text-align: center;
-  margin-top: 80px;
-  padding: 20px;
-}
-
-.hero-badge {
-  display: inline-block;
-  padding: 8px 15px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.main-title {
-  font-size: 55px;
-  font-weight: 800;
-}
-
-.main-title span {
-  color: #facc15;
-}
-
-.sub-caption {
-  margin-top: 15px;
-  font-size: 16px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.9;
-}
-
-/* ================= FOOD TEXT ANIMATION ================= */
-
-.food-text-animation {
-  margin-top: 20px;
-  height: 40px;
-  overflow: hidden;
-}
-
-.food-text-animation span {
-  display: block;
-  animation: slideText 12s infinite;
-  font-size: 18px;
-}
-
-@keyframes slideText {
-  0% { transform: translateY(0); }
-  10% { transform: translateY(-100%); }
-  20% { transform: translateY(-200%); }
-  30% { transform: translateY(-300%); }
-  40% { transform: translateY(-400%); }
-  50% { transform: translateY(-500%); }
-  60% { transform: translateY(-600%); }
-  70% { transform: translateY(-700%); }
-  80% { transform: translateY(-800%); }
-  90% { transform: translateY(-900%); }
-  100% { transform: translateY(-1000%); }
-}
-
-/* ================= BUTTONS ================= */
-
-.hero-actions {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
+.menu-trigger,
 .cta-main {
-  background: #ef4444;
+  background: #ff9800;
   color: white;
-
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-
-  cursor: pointer;
-  font-weight: 600;
-
-  transition: 0.3s;
 }
 
+.menu-trigger:hover,
 .cta-main:hover {
-  transform: scale(1.05);
-  background: #dc2626;
+  background: #ff5722;
+  transform: translateY(-3px);
 }
 
 .secondary-btn {
-  background: transparent;
-  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.15);
   color: white;
-
-  padding: 12px 20px;
-  border-radius: 10px;
-
-  cursor: pointer;
-  font-weight: 600;
-
-  transition: 0.3s;
 }
 
 .secondary-btn:hover {
-  background: white;
-  color: black;
+  background: rgba(255, 255, 255, 0.25);
 }
 
-/* ================= STATS ================= */
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
-.hero-stats {
-  margin-top: 25px;
+.hero-center-content {
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.hero-badge {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: rgba(255, 152, 0, 0.2);
+  border: 1px solid rgba(255, 152, 0, 0.5);
+  margin-bottom: 25px;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.main-title {
+  font-size: 75px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.main-title span {
+  color: #ff9800;
+}
+
+/* =========================================================
+   SUB TEXT
+========================================================= */
+
+.sub-caption {
+  max-width: 750px;
+  margin: 25px auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+/* =========================================================
+   ANIMATION TEXT
+========================================================= */
+
+.food-text-animation {
   display: flex;
   justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
 
-.stat-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px 25px;
-  border-radius: 15px;
+.food-text-animation span {
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+  animation: floatText 3s infinite ease-in-out;
 }
 
-/* ================= FOOD SCROLL ================= */
+@keyframes floatText {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-actions {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   FOOD SCROLL
+========================================================= */
 
 .marquee-wrapper {
-  margin-top: 40px;
-  padding: 10px;
+  margin-top: 60px;
+  overflow: hidden;
+  padding-bottom: 40px;
 }
 
 .food-scroll-wrapper {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
 .food-scroll-track {
   display: flex;
-  gap: 20px;
-  animation: scroll 20s linear infinite;
+  gap: 25px;
+  width: max-content;
+  animation: scrollFood 25s linear infinite;
 }
 
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes scrollFood {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* FOOD CARD */
+/* =========================================================
+   FOOD CARD
+========================================================= */
 
 .food-circle-card {
-  min-width: 120px;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 15px;
+  border-radius: 25px;
   text-align: center;
+  transition: 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.food-circle-card:hover {
+  transform: translateY(-10px);
 }
 
 .food-circle-card img {
-  width: 90px;
-  height: 90px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
-
-  border: 3px solid #fff;
+  border: 4px solid #ff9800;
 }
 
 .food-circle-card span {
   display: block;
-  margin-top: 5px;
-  font-size: 14px;
+  margin-top: 12px;
+  font-weight: 600;
 }
 
-/* ================= MENU POPUP ================= */
+/* =========================================================
+   NO FOOD
+========================================================= */
+
+.no-food {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* =========================================================
+   POPUP MENU
+========================================================= */
 
 .full-screen-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0,0,0,0.7);
-
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .menu-card {
-  background: white;
-  color: black;
-
-  padding: 30px;
-  border-radius: 15px;
-
-  width: 400px;
+  width: 90%;
+  max-width: 850px;
+  background: #111;
+  padding: 40px;
+  border-radius: 30px;
+  position: relative;
   text-align: center;
 }
 
 .close-x {
-  float: right;
-  font-size: 22px;
-  border: none;
+  position: absolute;
+  top: 20px;
+  right: 25px;
   background: none;
+  border: none;
+  color: white;
+  font-size: 35px;
   cursor: pointer;
 }
+
+.popup-title {
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+/* =========================================================
+   CATEGORY OPTIONS
+========================================================= */
 
 .cat-options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
 }
 
 .option {
-  padding: 15px;
-  background: #f3f4f6;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px 20px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .option:hover {
-  background: #e5e7eb;
-  transform: scale(1.05);
+  transform: translateY(-8px);
+  background: rgba(255, 152, 0, 0.2);
 }
 
-/* ================= FOOTER ================= */
+.icon {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .premium-footer {
-  background: #111827;
-  padding: 50px;
-  margin-top: 60px;
+  background: #0a0a0a;
+  padding: 70px 50px 30px;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
 }
 
-.footer-box h3,
 .footer-logo {
-  margin-bottom: 10px;
+  font-size: 32px;
+  margin-bottom: 15px;
 }
 
 .footer-logo span {
-  color: #facc15;
+  color: #ff9800;
+}
+
+.footer-box h3 {
+  margin-bottom: 18px;
+  color: #ff9800;
 }
 
 .footer-box p {
-  margin: 6px 0;
-  opacity: 0.8;
-  cursor: pointer;
+  margin-bottom: 10px;
+  color: #ccc;
+  line-height: 1.8;
 }
-
-.footer-box p:hover {
-  opacity: 1;
-}
-
-/* ================= FOOTER BOTTOM ================= */
 
 .footer-bottom {
   text-align: center;
-  margin-top: 30px;
-  opacity: 0.7;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  color: #999;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
+  .main-title {
+    font-size: 55px;
+  }
+
+  .top-nav {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
   .top-nav {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
   }
 
   .main-title {
-    font-size: 35px;
+    font-size: 42px;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
+  .sub-caption {
+    font-size: 15px;
+  }
+
+  .food-circle-card {
+    min-width: 150px;
+  }
+
+  .food-circle-card img {
+    width: 110px;
+    height: 110px;
   }
 }
 
-@media (max-width: 600px) {
-  .nav-right {
-    flex-direction: column;
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 34px;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
+  .hero-center-content {
+    margin-top: 50px;
   }
 
-  .menu-card {
-    width: 90%;
+  .popup-title {
+    font-size: 28px;
   }
 }
