@@ -14,6 +14,10 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@reduxjs/toolkit": "^2.11.2",
     "canvas-confetti": "^1.9.4",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "oracledb": "^6.10.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-hook-form": "^7.76.0",
@@ -34,5 +38,18 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
     "vite": "^8.0.14"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akash1446/FoodappProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akash1446/FoodappProject/issues"
+  },
+  "homepage": "https://github.com/akash1446/FoodappProject#readme"
 }
