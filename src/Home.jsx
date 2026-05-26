@@ -176,16 +176,16 @@ function Home() {
                         if (item.name === "Masala Dosa") {
                           navigate("/veg");
                         } else if (item.name === "Chicken Biryani") {
+                          /* ================= NON VEG PAGE ================= */
 
-                        /* ================= NON VEG PAGE ================= */
                           navigate("/nonveg");
                         } else if (item.name === "Butter") {
+                          /* ================= MILK PAGE ================= */
 
-                        /* ================= MILK PAGE ================= */
                           navigate("/milk");
                         } else if (item.name === "diamond") {
+                          /* ================= CHOCOLATE PAGE ================= */
 
-                        /* ================= CHOCOLATE PAGE ================= */
                           navigate("/chocolate");
                         }
                       }}
@@ -266,6 +266,42 @@ function Home() {
             <p>📧 akashguduri2@gmail.com</p>
 
             <p>📍 Hyderabad, Telangana, India</p>
+
+            {/* ================= SOCIAL MEDIA ================= */}
+
+            <div className="social-icons">
+              <a
+                href="https://instagram.com/guduri_akash92021"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/akash-guduri/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+
+              <a
+                href="https://github.com/akash1446"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-github"></i>
+              </a>
+
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fa-brands fa-youtube"></i>
+              </a>
+            </div>
           </div>
         </div>
 
