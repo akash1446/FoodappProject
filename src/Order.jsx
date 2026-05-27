@@ -20,8 +20,6 @@ function Order() {
 
   const orders = useSelector((globalState) => globalState.orders) || [];
 
-  console.log("Orders:", orders);
-
   // =========================
   // VALID ORDERS
   // =========================
@@ -70,15 +68,16 @@ function Order() {
   return (
     <div className="orders-page">
       {/* =========================
-          FLOATING BACKGROUND
+          VIDEO BACKGROUND
       ========================= */}
 
-      <div className="floating-bg">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div className="video-background">
+        <video autoPlay muted loop playsInline>
+          <source
+            src="/videos/food.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
 
       {/* =========================
@@ -109,27 +108,21 @@ function Order() {
         <ol className="orders-list">
           {validOrders.map((order, orderIndex) => (
             <li className="order-card" key={order.orderId || orderIndex}>
-              {/* =========================
-                  TOP BADGE
-              ========================= */}
+              {/* ORDER BADGE */}
 
               <div className="order-badge">#{orderIndex + 1}</div>
 
-              {/* =========================
-                  ORDER HEADER
-              ========================= */}
+              {/* ORDER HEADER */}
 
               <div className="order-header">
                 <div className="order-left">
                   <p className="order-id">
-                    Order ID :<span> {order.orderId}</span>
+                    Order ID : <span>{order.orderId}</span>
                   </p>
 
                   <p className="order-date">
                     📅 {order.date || "No Date Available"}
                   </p>
-
-                  {/* STATUS */}
 
                   <p
                     className={`order-status ${
@@ -140,13 +133,9 @@ function Order() {
                   </p>
                 </div>
 
-                {/* =========================
-                    BUTTONS
-                ========================= */}
+                {/* BUTTONS */}
 
                 <div className="order-buttons">
-                  {/* CONFIRM */}
-
                   <button
                     className="confirm-order-btn"
                     onClick={() => handleConfirmOrder(order.orderId)}
@@ -154,16 +143,12 @@ function Order() {
                     Confirm
                   </button>
 
-                  {/* CANCEL */}
-
                   <button
                     className="cancel-order-btn"
                     onClick={() => handleCancelOrder(order.orderId)}
                   >
                     Cancel
                   </button>
-
-                  {/* REMOVE */}
 
                   <button
                     className="remove-order-btn"
@@ -174,9 +159,7 @@ function Order() {
                 </div>
               </div>
 
-              {/* =========================
-                  ITEMS
-              ========================= */}
+              {/* ORDER ITEMS */}
 
               <ul className="order-items">
                 {order.items.map((item, itemIndex) => (
@@ -204,11 +187,11 @@ function Order() {
                       <h3>{item.name}</h3>
 
                       <p>
-                        Price :<span> ₹{item.price}</span>
+                        Price : <span>₹{item.price}</span>
                       </p>
 
                       <p>
-                        Quantity :<span> {item.quantity}</span>
+                        Quantity : <span>{item.quantity}</span>
                       </p>
 
                       <p className="item-total">
@@ -220,9 +203,7 @@ function Order() {
                 ))}
               </ul>
 
-              {/* =========================
-                  FOOTER
-              ========================= */}
+              {/* FOOTER */}
 
               <div className="order-footer">
                 <p className="order-total">

@@ -218,9 +218,7 @@ function Cart() {
     order_id: `ORDER-${Date.now()}`,
 
     orders: cartItems.map((item) => ({
-      image:
-        item.imageUrl ||
-        "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
+      item: item.imageUrl,
 
       name: item.name,
 
