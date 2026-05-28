@@ -25,9 +25,87 @@ function App() {
   // ================= SEARCH STATE =================
   const [search, setSearch] = useState("");
 
-  // ================= REDUX =================
-  const cartItems = useSelector((state) => state.cart?.items) || [];
+  // ================= SEARCH FUNCTION =================
+  const handleSearch = () => {
+    if (search.trim() === "") return;
 
+    const value = search.toLowerCase();
+
+    // ================= HOME =================
+    if (value.includes("home")) {
+      navigate("/");
+    }
+
+    // ================= VEG ITEMS =================
+    else if (
+      value.includes("veg") ||
+      value.includes("paneer") ||
+      value.includes("pizza") ||
+      value.includes("burger") ||
+      value.includes("salad") ||
+      value.includes("fried rice")
+    ) {
+      navigate("/veg");
+    }
+
+    // ================= NONVEG ITEMS =================
+    else if (
+      value.includes("nonveg") ||
+      value.includes("chicken") ||
+      value.includes("biryani") ||
+      value.includes("fish") ||
+      value.includes("mutton")
+    ) {
+      navigate("/nonveg");
+    }
+
+    // ================= MILK ITEMS =================
+    else if (
+      value.includes("milk") ||
+      value.includes("coffee") ||
+      value.includes("shake") ||
+      value.includes("lassi")
+    ) {
+      navigate("/milk");
+    }
+
+    // ================= CHOCOLATE ITEMS =================
+    else if (
+      value.includes("chocolate") ||
+      value.includes("cake") ||
+      value.includes("oreo") ||
+      value.includes("ice cream")
+    ) {
+      navigate("/chocolate");
+    }
+
+    // ================= OTHER PAGES =================
+    else if (value.includes("cart")) {
+      navigate("/cart");
+    } else if (value.includes("order")) {
+      navigate("/order");
+    } else if (value.includes("about")) {
+      navigate("/about");
+    } else if (value.includes("contact")) {
+      navigate("/contact");
+    } else if (value.includes("login")) {
+      navigate("/login");
+    } else if (value.includes("register")) {
+      navigate("/register");
+    }
+
+    // ================= NOT FOUND =================
+    else {
+      alert("Item not found");
+    }
+
+    setSearch("");
+  };
+
+  // ================= REDUX =================
+  const cartItems = useSelector((state) => state.cart) || [];
+
+  // ================= CART QUANTITY =================
   const cartQuantity = cartItems.reduce(
     (total, item) => total + (item.quantity || 0),
     0,
@@ -46,60 +124,81 @@ function App() {
     <>
       {/* ================= NAVBAR ================= */}
       <nav className="navbar">
+        {/* ================= LOGO ================= */}
         <h2 className="logo">
           <i className="fa-solid fa-utensils"></i>
           FOODIE<span>ZONE</span>
         </h2>
 
+        {/* ================= NAV LINKS ================= */}
         <div className="nav-links">
           <Link to="/">
-            <i class="fa-solid fa-house"></i>Home
+            <i className="fa-solid fa-house"></i>
+            Home
           </Link>
 
           <Link to="/veg">
-            <i class="fa-solid fa-carrot"></i>Veg
+            <i className="fa-solid fa-carrot"></i>
+            Veg
           </Link>
 
           <Link to="/nonveg">
-            <i class="fa-solid fa-drumstick-bite"></i>NonVeg
+            <i className="fa-solid fa-drumstick-bite"></i>
+            NonVeg
           </Link>
 
           <Link to="/milk">
-            <i class="fa-solid fa-blender"></i>Milk
+            <i className="fa-solid fa-blender"></i>
+            Milk
           </Link>
 
           <Link to="/chocolate">
-            <i class="fa-solid fa-cookie"></i>Chocolate
+            <i className="fa-solid fa-cookie"></i>
+            Chocolate
           </Link>
 
           <Link to="/order">
-            <i class="fa-solid fa-bacon"></i>Orders
+            <i className="fa-solid fa-bacon"></i>
+            Orders
           </Link>
 
           <Link to="/about">
-            <i class="fa-solid fa-circle-info"></i>About
+            <i className="fa-solid fa-circle-info"></i>
+            About
           </Link>
 
           <Link to="/contact">
-            <i class="fa-solid fa-address-book"></i>Contact
+            <i className="fa-solid fa-address-book"></i>
+            Contact
           </Link>
 
+          {/* ================= CART ================= */}
           <Link to="/cart" className="cart-link">
-            <i class="fa-solid fa-cart-arrow-down"></i> Cart
+            <i className="fa-solid fa-cart-arrow-down"></i>
+            Cart
             {cartQuantity > 0 && (
               <span className="cart-badge">{cartQuantity}</span>
             )}
           </Link>
 
-          {/* ================= SEARCH BAR ADDED ================= */}
+          {/* ================= SEARCH BAR ================= */}
           <div className="search-bar">
             <input
               type="text"
               placeholder="Search food..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
             />
-            <i className="fa-solid fa-magnifying-glass"></i>
+
+            <i
+              className="fa-solid fa-magnifying-glass"
+              onClick={handleSearch}
+            ></i>
           </div>
 
           {/* ================= AUTH ================= */}
@@ -113,15 +212,15 @@ function App() {
                 </button>
               </>
             ) : (
-              <>
-                <Link to="/login">
-                  <i class="fa-solid fa-key"></i>Login
-                </Link>
-              </>
+              <Link to="/login" className="login-btn">
+                <i className="fa-solid fa-key"></i>
+                Login
+              </Link>
             )}
 
-            <Link to="/register">
-              <i class="fa-solid fa-user"></i>Register
+            <Link to="/register" className="register-btn">
+              <i className="fa-solid fa-user"></i>
+              Register
             </Link>
           </div>
         </div>
@@ -132,16 +231,27 @@ function App() {
         <main className="content">
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/veg" element={<Veg />} />
+
             <Route path="/nonveg" element={<NonVeg />} />
+
             <Route path="/milk" element={<Milk />} />
+
             <Route path="/chocolate" element={<Chocolate />} />
+
             <Route path="/cart" element={<Cart />} />
+
             <Route path="/login" element={<Login />} />
+
             <Route path="/register" element={<Register />} />
+
             <Route path="/order" element={<Order />} />
+
             <Route path="/about" element={<Aboutus />} />
+
             <Route path="/contact" element={<Contactus />} />
+
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
