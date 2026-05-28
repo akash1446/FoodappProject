@@ -80,14 +80,16 @@ body {
   position: relative;
 }
 
-/* Hover effect (merged from glass style) */
+/* ================= NAV HOVER ================= */
+
 .nav-links a:hover {
   color: #2ecc71;
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* underline animation */
+/* ================= UNDERLINE EFFECT ================= */
+
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -104,6 +106,50 @@ body {
   width: 60%;
 }
 
+/* ================= SEARCH BAR ================= */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+
+  padding: 6px 12px;
+  border-radius: 50px;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+}
+
+.search-bar:hover {
+  border-color: #2ecc71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.25);
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+  font-size: 13px;
+
+  width: 170px;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.search-bar i {
+  color: #2ecc71;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 /* ================= AUTH BUTTONS ================= */
 
 .auth-buttons {
@@ -112,7 +158,8 @@ body {
   gap: 10px;
 }
 
-/* LOGIN */
+/* ================= LOGIN BUTTON ================= */
+
 .login-btn {
   padding: 7px 14px;
   border-radius: 50px;
@@ -132,7 +179,8 @@ body {
   transform: translateY(-2px);
 }
 
-/* REGISTER */
+/* ================= REGISTER BUTTON ================= */
+
 .register-btn {
   padding: 7px 14px;
   border-radius: 50px;
@@ -150,6 +198,36 @@ body {
 .register-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(46,204,113,0.3);
+}
+
+/* ================= LOGOUT BUTTON ================= */
+
+.logout-btn {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 50px;
+
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,65,108,0.3);
+}
+
+/* ================= WELCOME TEXT ================= */
+
+.welcome-text {
+  font-size: 13px;
+  color: #2ecc71;
+  font-weight: 500;
 }
 
 /* ================= CART ================= */
@@ -239,21 +317,36 @@ body {
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
+
+  .navbar {
+    gap: 10px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
   .nav-links a {
     font-size: 12px;
     padding: 6px 8px;
   }
 
-  .hero h1 {
-    font-size: 2.2rem;
+  .search-bar {
+    width: 100%;
+    justify-content: space-between;
   }
 
-  .navbar {
-    gap: 10px;
+  .search-bar input {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
   }
 }
 
 @media (max-width: 480px) {
+
   .navbar {
     padding: 12px 15px;
   }
@@ -261,9 +354,14 @@ body {
   .auth-buttons {
     justify-content: center;
     width: 100%;
+    flex-wrap: wrap;
   }
 
   .hero h1 {
     font-size: 1.8rem;
+  }
+
+  .search-bar {
+    width: 100%;
   }
 }

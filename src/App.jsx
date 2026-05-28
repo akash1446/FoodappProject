@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -21,6 +21,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 function App() {
   // ================= NAVIGATION =================
   const navigate = useNavigate();
+
+  // ================= SEARCH STATE =================
+  const [search, setSearch] = useState("");
 
   // ================= REDUX =================
   const cartItems = useSelector((state) => state.cart?.items) || [];
@@ -52,24 +55,31 @@ function App() {
           <Link to="/">
             <i class="fa-solid fa-house"></i>Home
           </Link>
+
           <Link to="/veg">
             <i class="fa-solid fa-carrot"></i>Veg
           </Link>
+
           <Link to="/nonveg">
             <i class="fa-solid fa-drumstick-bite"></i>NonVeg
           </Link>
+
           <Link to="/milk">
             <i class="fa-solid fa-blender"></i>Milk
           </Link>
+
           <Link to="/chocolate">
             <i class="fa-solid fa-cookie"></i>Chocolate
           </Link>
+
           <Link to="/order">
             <i class="fa-solid fa-bacon"></i>Orders
           </Link>
+
           <Link to="/about">
             <i class="fa-solid fa-circle-info"></i>About
           </Link>
+
           <Link to="/contact">
             <i class="fa-solid fa-address-book"></i>Contact
           </Link>
@@ -81,6 +91,18 @@ function App() {
             )}
           </Link>
 
+          {/* ================= SEARCH BAR ADDED ================= */}
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search food..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </div>
+
+          {/* ================= AUTH ================= */}
           <div className="auth-buttons">
             {user ? (
               <>
@@ -97,6 +119,7 @@ function App() {
                 </Link>
               </>
             )}
+
             <Link to="/register">
               <i class="fa-solid fa-user"></i>Register
             </Link>
