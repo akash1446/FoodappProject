@@ -3,142 +3,154 @@ import "./Aboutus.css";
 
 const features = [
   {
-    icon: "🎯",
+    icon: "🍔",
     colorClass: "card--amber",
-    title: "Our Mission",
-    desc: "Deliver fresh, tasty, and hygienic food quickly while providing a premium and enjoyable ordering experience for every customer.",
+    title: "Delicious Food",
+    desc: "Enjoy mouth-watering dishes prepared with fresh ingredients and rich flavors from top restaurants.",
   },
+
   {
-    icon: "🚀",
+    icon: "⚡",
     colorClass: "card--coral",
     title: "Fast Delivery",
-    desc: "Lightning-fast delivery network that ensures your food arrives hot, fresh, and on time every single day.",
+    desc: "Get your favorite meals delivered quickly and safely to your doorstep anytime you order.",
   },
+
   {
     icon: "🥗",
     colorClass: "card--teal",
-    title: "Quality Food",
-    desc: "Prepared with high-quality ingredients and strict hygiene standards to guarantee delicious and safe meals.",
+    title: "Fresh & Healthy",
+    desc: "We maintain high hygiene standards and use quality ingredients for every meal we deliver.",
   },
+
   {
     icon: "💳",
     colorClass: "card--blue",
     title: "Secure Payments",
-    desc: "Pay safely using UPI, cards, wallets, or cash on delivery with complete payment security.",
+    desc: "Pay securely using UPI, debit cards, credit cards, wallets, or cash on delivery.",
   },
+
   {
     icon: "📍",
     colorClass: "card--green",
     title: "Live Tracking",
-    desc: "Track your order in real-time from the restaurant kitchen directly to your doorstep.",
+    desc: "Track your food order in real-time from the restaurant directly to your location.",
   },
+
   {
-    icon: "❤️",
+    icon: "🎧",
     colorClass: "card--pink",
     title: "24/7 Support",
-    desc: "Friendly customer support available anytime to help with your orders, payments, or delivery queries.",
+    desc: "Our customer support team is always ready to help you with orders and delivery issues.",
   },
 ];
 
 const highlights = [
-  { icon: "🌿", label: "Fresh Food" },
-  { icon: "⚡", label: "Fast Delivery" },
-  { icon: "🏷️", label: "Best Price" },
-  { icon: "⭐", label: "Trusted Service" },
-  { icon: "🎧", label: "24/7 Support" },
+  { icon: "🍕", label: "Tasty Meals" },
+
+  { icon: "🚀", label: "Quick Delivery" },
+
+  { icon: "⭐", label: "Top Rated Service" },
+
+  { icon: "💰", label: "Affordable Prices" },
+
+  { icon: "❤️", label: "Customer Satisfaction" },
 ];
 
 function Aboutus() {
   return (
     <div className="about-page">
       {/* HERO SECTION */}
+
       <header className="about-hero">
-        <span></span>
+        <div className="about-overlay"></div>
 
         <div className="about-hero-content">
-          <div className="about-hero__tag">Since 2020 • Hyderabad</div>
+          <div className="about-hero__tag">
+            🔥 India’s Favorite Food Delivery Platform
+          </div>
 
-          <h1 className="about-hero__title">Foodie Express</h1>
+          <h1 className="about-hero__title">
+            Fresh Food <span>Delivered Fast</span>
+          </h1>
 
           <p className="about-hero__sub">
-            Experience delicious meals from your favorite restaurants delivered
-            fast, fresh, and right to your doorstep.
+            Discover delicious meals from your favorite restaurants with
+            lightning-fast delivery and premium customer experience.
           </p>
 
-          {/* HERO STATS */}
-          <div className="about-stats">
-            <div className="about-stat-card">
-              <h2>50K+</h2>
-              <p>Happy Customers</p>
-            </div>
+          <div className="about-hero-buttons">
+            <button className="primary-btn">Order Now</button>
 
-            <div className="about-stat-card">
-              <h2>120+</h2>
-              <p>Restaurants</p>
-            </div>
-
-            <div className="about-stat-card">
-              <h2>24/7</h2>
-              <p>Customer Support</p>
-            </div>
+            <button className="secondary-btn">Explore Menu</button>
           </div>
         </div>
       </header>
 
-      {/* MAIN BODY */}
+      {/* MAIN CONTENT */}
+
       <main className="about-body">
-        {/* INTRO */}
-        <div className="about-intro">
+        {/* INTRO SECTION */}
+
+        <section className="about-intro">
+          <h2>Welcome To Foodie Express</h2>
+
           <p>
-            Welcome to <strong>Foodie Express</strong> — your trusted online
-            food delivery platform. We connect food lovers with top-rated
-            restaurants, bringing quality meals, fast delivery, and a seamless
-            ordering experience together in one place.
+            Foodie Express connects food lovers with top-rated restaurants to
+            deliver fresh, tasty, and hygienic meals right to your doorstep. We
+            combine quality food, fast delivery, secure payments, and excellent
+            support to create the best online food ordering experience.
           </p>
-        </div>
+        </section>
 
-        {/* SECTION LABEL */}
+        {/* SECTION HEADING */}
+
         <div className="about-heading-wrap">
-          <p className="about-section-label">WHAT WE OFFER</p>
+          <p className="about-section-label">OUR SERVICES</p>
 
-          <h2 className="about-main-heading">Premium Food Delivery Services</h2>
+          <h2 className="about-main-heading">
+            Why Customers Love Foodie Express
+          </h2>
         </div>
 
         {/* FEATURES GRID */}
+
         <div className="about-grid">
           {features.map(({ icon, colorClass, title, desc }) => (
             <div key={title} className={`about-card ${colorClass}`}>
-              <div className="about-card__icon" aria-hidden="true">
-                {icon}
-              </div>
+              <div className="about-card__icon">{icon}</div>
 
-              <h2 className="about-card__title">{title}</h2>
+              <h3 className="about-card__title">{title}</h3>
 
               <p className="about-card__desc">{desc}</p>
             </div>
           ))}
         </div>
 
-        {/* WHY CHOOSE US */}
-        <div className="about-banner">
+        {/* BOTTOM BANNER */}
+
+        <section className="about-banner">
           <div className="about-banner-content">
-            <h3 className="about-banner__title">Why Choose Foodie Express?</h3>
+            <h2 className="about-banner__title">
+              Experience Fast & Reliable Food Delivery
+            </h2>
 
             <p className="about-banner__sub">
-              We focus on quality food, fast delivery, affordable pricing, and
-              excellent customer support.
+              We deliver happiness with tasty meals, fast service, affordable
+              pricing, and trusted customer support.
             </p>
 
-            <ul className="about-pills" role="list">
+            <div className="about-pills">
               {highlights.map(({ icon, label }) => (
-                <li key={label} className="about-pill">
-                  <span aria-hidden="true">{icon}</span>
+                <div key={label} className="about-pill">
+                  <span>{icon}</span>
+
                   {label}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );

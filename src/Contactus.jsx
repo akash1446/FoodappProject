@@ -1,10 +1,6 @@
 import React from "react";
 import "./Contactus.css";
-import {
-  FaEnvelope,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 function Contactus() {
   return (
@@ -26,7 +22,7 @@ function Contactus() {
             <FaEnvelope className="icon email" />
 
             <p>
-              <span>Email:</span>guduriakash9@gmail.com
+              <span>Email:</span> guduriakash9@gmail.com
             </p>
           </div>
 
@@ -53,6 +49,19 @@ function Contactus() {
             <p>Mon - Sat: 8:59 AM - 9:00 PM</p>
 
             <p>Sunday: Closed</p>
+          </div>
+
+          {/* GOOGLE MAP */}
+          <div className="map-section">
+            <iframe
+              title="Google Map"
+              src="https://www.google.com/maps?q=Ameerpet,Hyderabad&output=embed"
+              width="100%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
 
