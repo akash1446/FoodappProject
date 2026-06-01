@@ -171,7 +171,7 @@ function Register() {
           {/* LOGIN LINK */}
           <p className="login-redirect-text">
             Already have an account?
-            <Link to="/" className="login-redirect-link">
+            <Link to="/login" className="login-redirect-link">
               Login
             </Link>
           </p>

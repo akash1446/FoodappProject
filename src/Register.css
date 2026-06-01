@@ -1,279 +1,128 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-/* ================= GLOBAL RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-/* IMPORTANT: keep body minimal to avoid affecting other pages */
-body {
-  background: #09090b;
-  overflow-x: hidden;
-}
-
-/* ================= WRAPPER ================= */
 .register-wrapper {
-  width: 100%;
   min-height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  padding: 40px 20px;
-
-  background: linear-gradient(135deg, #09090b, #11111f, #18182c);
-
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #ff6b00,
+    #ff9500,
+    #ffd000
+  );
+  padding: 20px;
 }
 
-/* ================= BACKGROUND EFFECTS ================= */
-.register-wrapper::before,
-.register-wrapper::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  z-index: 0;
-}
-
-.register-wrapper::before {
-  width: 380px;
-  height: 380px;
-  background: rgba(99, 102, 241, 0.14);
-  top: -100px;
-  right: -100px;
-}
-
-.register-wrapper::after {
-  width: 320px;
-  height: 320px;
-  background: rgba(168, 85, 247, 0.11);
-  bottom: -80px;
-  left: -80px;
-}
-
-/* ================= CARD ================= */
 .register-card {
   width: 100%;
-  max-width: 460px;
-
-  padding: 40px;
-
-  border-radius: 25px;
-
-  background: rgba(255, 255, 255, 0.04);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-
-  position: relative;
-  z-index: 2;
-
-  transition: 0.3s ease;
+  max-width: 500px;
+  padding: 35px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
-.register-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-/* ================= TITLE ================= */
 .register-title {
   text-align: center;
-  font-size: 2.4rem;
-  font-weight: 800;
-
-  color: #ffffff;
-
-  margin-bottom: 4px;
+  color: white;
+  margin-bottom: 10px;
 }
 
 .register-title span {
-  color: #a855f7;
+  color: #ffd000;
 }
 
 .register-subtitle {
   text-align: center;
-
-  color: rgba(255, 255, 255, 0.6);
-
-  font-size: 14px;
-
+  color: white;
   margin-bottom: 25px;
 }
 
-/* ================= FORM ================= */
 .register-form {
   display: flex;
   flex-direction: column;
 }
 
-/* LABEL */
 .register-label {
-  color: rgba(255, 255, 255, 0.9);
-
-  font-size: 13px;
-
-  margin-top: 12px;
+  color: white;
   margin-bottom: 6px;
+  margin-top: 10px;
+  font-weight: 500;
 }
 
-/* INPUT WRAPPER */
 .input-box {
   position: relative;
-  width: 100%;
 }
 
-/* ICON */
 .input-icon {
   position: absolute;
-  left: 16px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
-
-  color: rgba(255, 255, 255, 0.4);
-
-  font-size: 16px;
 }
 
-/* INPUT */
-.register-card .register-input {
+.register-input {
   width: 100%;
-
-  padding: 13px 14px 13px 48px;
-
-  border-radius: 14px;
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  background: rgba(255, 255, 255, 0.05);
-
-  color: #f5f5f5;
-
-  font-size: 14px;
-
+  padding: 14px 14px 14px 45px;
+  border: none;
   outline: none;
-
-  transition: 0.3s ease;
+  border-radius: 10px;
+  font-size: 15px;
 }
 
-.register-card .register-input::placeholder {
-  color: rgba(255, 255, 255, 0.35);
-}
-
-.register-card .register-input:focus {
-  border-color: #6366f1;
-
-  background: rgba(99, 102, 241, 0.06);
-
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
-}
-
-/* ================= ERROR ================= */
-.register-card .register-input.input-error {
-  border-color: #e74c3c;
+.input-error {
+  border: 2px solid red;
 }
 
 .error-msg {
-  color: #e74c3c;
-
-  font-size: 12px;
-
+  color: #fff;
+  font-size: 13px;
   margin-top: 4px;
-
-  display: block;
 }
 
-/* ================= BUTTON ================= */
 .register-btn {
-  width: 100%;
-
-  margin-top: 24px;
-
+  margin-top: 20px;
   padding: 14px;
-
   border: none;
-
-  border-radius: 14px;
-
-  background: linear-gradient(135deg, #6366f1, #a855f7);
-
+  border-radius: 10px;
+  background: #ff6b00;
   color: white;
-
   font-size: 16px;
-
-  font-weight: 600;
-
   cursor: pointer;
-
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 .register-btn:hover {
+  background: #ff9500;
   transform: translateY(-2px);
-
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
 }
 
-.register-btn:active {
-  transform: scale(0.98);
-}
-
-/* ================= FOOTER ================= */
 .login-redirect-text {
-  margin-top: 20px;
-
+  margin-top: 15px;
   text-align: center;
-
-  color: rgba(255, 255, 255, 0.5);
-
-  font-size: 14px;
+  color: white;
 }
 
 .login-redirect-link {
-  color: #a855f7;
-
-  margin-left: 6px;
-
+  margin-left: 5px;
+  color: #fff;
   font-weight: 600;
-
   text-decoration: none;
 }
 
 .login-redirect-link:hover {
-  color: #6366f1;
-
   text-decoration: underline;
 }
 
-/* ================= AUTOFILL FIX ================= */
-.register-card .register-input:-webkit-autofill {
-  -webkit-text-fill-color: #f5f5f5 !important;
-
-  -webkit-box-shadow: 0 0 0px 1000px #131324 inset !important;
-
-  transition: background-color 5000s ease-in-out;
-}
-
-/* ================= RESPONSIVE ================= */
 @media (max-width: 480px) {
   .register-card {
-    padding: 30px 20px;
-  }
-
-  .register-title {
-    font-size: 2rem;
-  }
-
-  .register-card .register-input {
-    padding: 12px 12px 12px 42px;
+    padding: 25px;
   }
 }

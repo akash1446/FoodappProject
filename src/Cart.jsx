@@ -213,12 +213,12 @@ function Cart() {
   ========================= */
 
   const templateParams = {
-    logo: "https://cdn-icons-png.flaticon.com/512/3075/3075977.png",
+    logo:  "https://foodapp-project-umber.vercel.app/logo.png",
 
     order_id: `ORDER-${Date.now()}`,
 
     orders: cartItems.map((item) => ({
-      item: item.imageUrl,
+      item: `${window.location.origin}${item.imageUrl}`,
 
       name: item.name,
 
@@ -228,13 +228,10 @@ function Cart() {
     })),
 
     cost: {
-      shipping: 50,
-
-      tax: taxAmount.toFixed(2),
-
-      total: netAmount.toFixed(2),
-
-      couponAmount: couponDiscountAmount.toFixed(2),
+    shipping: 50,
+    tax: taxAmount.toFixed(2),
+    total: netAmount.toFixed(2),
+    couponAmount: couponDiscountAmount.toFixed(2),
     },
 
     email: customerEmail,
