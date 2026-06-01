@@ -218,7 +218,7 @@ function Cart() {
     order_id: `ORDER-${Date.now()}`,
 
     orders: cartItems.map((item) => ({
-      item: `${window.location.origin}${item.imageUrl}`,
+      item: item.imageUrl,
 
       name: item.name,
 
