@@ -244,3 +244,25 @@ body {
     min-width: 75px;
   }
 }
+.price-filter {
+  max-width: 400px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+.price-filter-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.price-slider {
+  width: 100%;
+  cursor: pointer;
+}
+
+.no-results {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  font-style: italic;
+}

@@ -215,6 +215,12 @@ function Milk() {
   const itemsPerPage = 6;
 
   // =========================
+  // PRICE FILTER SLIDER 💰
+  // =========================
+  const highestPrice = Math.max(...milkitems.map((item) => item.price));
+  const [maxPrice, setMaxPrice] = useState(highestPrice);
+
+  // =========================
   // ⭐ RATING (ADDED ONLY)
   // =========================
   const getRating = (id) => {
@@ -252,11 +258,19 @@ function Milk() {
   };
 
   // =========================
+  // FILTER BY PRICE
+  // =========================
+  const filteredItems = milkitems.filter((item) => item.price <= maxPrice);
+
+  // =========================
   // PAGINATION
   // =========================
-  const totalPages = Math.ceil(milkitems.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = milkitems.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = filteredItems.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -265,6 +279,14 @@ function Milk() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  // =========================
+  // PRICE CHANGE
+  // =========================
+  const handlePriceChange = (e) => {
+    setMaxPrice(Number(e.target.value));
+    setCurrentPage(1); // reset to page 1 whenever the filter changes
   };
 
   return (
@@ -281,6 +303,20 @@ function Milk() {
       {/* HEADER */}
       <div className="header-section">
         <h1>🥛 Milk Products</h1>
+      </div>
+
+      {/* PRICE FILTER SLIDER */}
+      <div className="price-filter">
+        <p className="price-filter-label">Max Price: ₹{maxPrice}</p>
+        <input
+          type="range"
+          min="0"
+          max={highestPrice}
+          step="10"
+          value={maxPrice}
+          onChange={handlePriceChange}
+          className="price-slider"
+        />
       </div>
 
       {/* PRODUCTS */}
@@ -309,6 +345,10 @@ function Milk() {
             </div>
           </div>
         ))}
+
+        {currentItems.length === 0 && (
+          <p className="no-results">No items match this price range.</p>
+        )}
       </div>
 
       {/* PAGINATION */}

@@ -156,51 +156,6 @@ function App() {
             <i className="fa-solid fa-cookie"></i>
             Chocolate
           </Link>
-
-          <Link to="/order">
-            <i className="fa-solid fa-bacon"></i>
-            Orders
-          </Link>
-
-          <Link to="/about">
-            <i className="fa-solid fa-circle-info"></i>
-            About
-          </Link>
-
-          <Link to="/contact">
-            <i className="fa-solid fa-address-book"></i>
-            Contact
-          </Link>
-
-          {/* ================= CART ================= */}
-          <Link to="/cart" className="cart-link">
-            <i className="fa-solid fa-cart-arrow-down"></i>
-            Cart
-            {cartQuantity > 0 && (
-              <span className="cart-badge">{cartQuantity}</span>
-            )}
-          </Link>
-
-          {/* ================= SEARCH BAR ================= */}
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search food..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSearch();
-                }
-              }}
-            />
-
-            <i
-              className="fa-solid fa-magnifying-glass"
-              onClick={handleSearch}
-            ></i>
-          </div>
-
           {/* ================= AUTH ================= */}
           <div className="auth-buttons">
             {user ? (
@@ -217,6 +172,48 @@ function App() {
                 Login
               </Link>
             )}
+            {/* ================= CART ================= */}
+            <Link to="/cart" className="cart-link">
+              <i className="fa-solid fa-cart-arrow-down"></i>
+              Cart
+              {cartQuantity > 0 && (
+                <span className="cart-badge">{cartQuantity}</span>
+              )}
+            </Link>
+            <Link to="/order">
+              <i className="fa-solid fa-bacon"></i>
+              Orders
+            </Link>
+
+            <Link to="/about">
+              <i className="fa-solid fa-circle-info"></i>
+              About
+            </Link>
+
+            <Link to="/contact">
+              <i className="fa-solid fa-address-book"></i>
+              Contact
+            </Link>
+
+            {/* ================= SEARCH BAR ================= */}
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Search food..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
+              />
+
+              <i
+                className="fa-solid fa-magnifying-glass"
+                onClick={handleSearch}
+              ></i>
+            </div>
 
             <Link to="/register" className="register-btn">
               <i className="fa-solid fa-user"></i>

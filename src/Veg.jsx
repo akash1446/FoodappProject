@@ -212,6 +212,12 @@ function Veg() {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
+  // =========================
+  // PRICE FILTER SLIDER 💰
+  // =========================
+  const highestPrice = Math.max(...products.map((p) => p.price));
+  const [maxPrice, setMaxPrice] = useState(highestPrice);
+
   const itemsPerPage = 6;
 
   // =========================
@@ -223,13 +229,21 @@ function Veg() {
   };
 
   // =========================
+  // FILTER BY PRICE
+  // =========================
+  const filteredProducts = products.filter((item) => item.price <= maxPrice);
+
+  // =========================
   // PAGINATION
   // =========================
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
 
-  const currentItems = products.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = filteredProducts.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   // =========================
   // ADD TO CART
@@ -265,6 +279,14 @@ function Veg() {
     });
   };
 
+  // =========================
+  // PRICE CHANGE
+  // =========================
+  const handlePriceChange = (e) => {
+    setMaxPrice(Number(e.target.value));
+    setCurrentPage(1); // reset to page 1 whenever the filter changes
+  };
+
   return (
     <div className="veg-wrapper">
       <ToastContainer />
@@ -279,6 +301,20 @@ function Veg() {
       {/* HEADER */}
       <div className="header-section">
         <h2>🥦 Fresh Veg Menu</h2>
+      </div>
+
+      {/* PRICE FILTER SLIDER */}
+      <div className="price-filter">
+        <p className="price-filter-label">Max Price: ₹{maxPrice}</p>
+        <input
+          type="range"
+          min="0"
+          max={highestPrice}
+          step="5"
+          value={maxPrice}
+          onChange={handlePriceChange}
+          className="price-slider"
+        />
       </div>
 
       {/* GRID */}
@@ -308,6 +344,10 @@ function Veg() {
             </div>
           </div>
         ))}
+
+        {currentItems.length === 0 && (
+          <p className="no-results">No items match this price range.</p>
+        )}
       </div>
 
       {/* PAGINATION */}

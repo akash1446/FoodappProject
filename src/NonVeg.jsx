@@ -162,6 +162,12 @@ function NonVeg() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  // =========================
+  // PRICE FILTER SLIDER 💰
+  // =========================
+  const highestPrice = Math.max(...NonVegItems.map((item) => item.price));
+  const [maxPrice, setMaxPrice] = useState(highestPrice);
+
   const itemsPerPage = 6;
 
   // =========================
@@ -221,11 +227,19 @@ function NonVeg() {
   };
 
   // =========================
+  // FILTER BY PRICE
+  // =========================
+  const filteredItems = NonVegItems.filter((item) => item.price <= maxPrice);
+
+  // =========================
   // PAGINATION
   // =========================
-  const totalPages = Math.ceil(NonVegItems.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = NonVegItems.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = filteredItems.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const handlePageChange = (n) => {
     setCurrentPage(n);
@@ -234,6 +248,14 @@ function NonVeg() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  // =========================
+  // PRICE CHANGE
+  // =========================
+  const handlePriceChange = (e) => {
+    setMaxPrice(Number(e.target.value));
+    setCurrentPage(1); // reset to page 1 whenever the filter changes
   };
 
   return (
@@ -250,6 +272,20 @@ function NonVeg() {
       {/* HEADER */}
       <div className="header-section">
         <h2>🍗 Premium Non-Veg</h2>
+      </div>
+
+      {/* PRICE FILTER SLIDER */}
+      <div className="price-filter">
+        <p className="price-filter-label">Max Price: ₹{maxPrice}</p>
+        <input
+          type="range"
+          min="0"
+          max={highestPrice}
+          step="10"
+          value={maxPrice}
+          onChange={handlePriceChange}
+          className="price-slider"
+        />
       </div>
 
       {/* GRID */}
@@ -278,6 +314,10 @@ function NonVeg() {
             </div>
           </div>
         ))}
+
+        {currentItems.length === 0 && (
+          <p className="no-results">No items match this price range.</p>
+        )}
       </div>
 
       {/* PAGINATION */}
