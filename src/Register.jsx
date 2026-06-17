@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Register.css";
+import { registerUser } from "./redux/apis";
 
 function Register() {
   const navigate = useNavigate();
@@ -17,35 +18,29 @@ function Register() {
 
   const passwordValue = watch("password");
 
-  const registerLogics = (userData) => {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+  const registerLogics = async (userData) => {
+    const { confirmPassword, ...newUser } = userData;
 
-    const emailExists = users.some((user) => user.email === userData.email);
+    try {
+      await registerUser(newUser);
 
-    if (emailExists) {
+      Swal.fire({
+        icon: "success",
+        title: "Registration Successful!",
+        text: "Your data has been safely stored.",
+      }).then(() => {
+        // ✅ FIXED ROUTE (IMPORTANT)
+        navigate("/");
+      });
+
+      reset();
+    } catch (error) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "This email is already registered!",
+        text: error.message || "This email is already registered!",
       });
-      return;
     }
-
-    const { confirmPassword, ...newUser } = userData;
-
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-
-    Swal.fire({
-      icon: "success",
-      title: "Registration Successful!",
-      text: "Your data has been safely stored.",
-    }).then(() => {
-      // ✅ FIXED ROUTE (IMPORTANT)
-      navigate("/");
-    });
-
-    reset();
   };
 
   return (

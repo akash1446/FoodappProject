@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Login.css";
+import { loginUser } from "./redux/apis";
 
 function Login() {
   const {
@@ -14,33 +15,11 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const Loginlogics = (loginDetails) => {
-    // Get all registered users
-    const registeredUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const Loginlogics = async (loginDetails) => {
+    try {
+      const validUser = await loginUser(loginDetails);
 
-    // If no users registered
-    if (registeredUsers.length === 0) {
-      Swal.fire({
-        icon: "warning",
-        title: "No User Found",
-        text: "Please register first!",
-        confirmButtonText: "Go to Register",
-      }).then(() => {
-        navigate("/register");
-      });
-
-      return;
-    }
-
-    // Check valid user
-    const validUser = registeredUsers.find(
-      (user) =>
-        user.email === loginDetails.email &&
-        user.password === loginDetails.password,
-    );
-
-    // Login success
-    if (validUser) {
+      // Login success
       localStorage.setItem("loggedInUser", JSON.stringify(validUser));
 
       Swal.fire({
@@ -59,14 +38,12 @@ function Login() {
         // Optional refresh
         window.location.reload();
       }, 1500);
-    }
-
-    // Invalid login
-    else {
+    } catch (error) {
+      // Invalid login
       Swal.fire({
         icon: "error",
         title: "Login Failed",
-        text: "Invalid email or password",
+        text: error.message || "Invalid email or password",
         confirmButtonText: "Register Now",
       }).then(() => {
         navigate("/register");

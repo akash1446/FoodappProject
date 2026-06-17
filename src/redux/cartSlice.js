@@ -33,7 +33,7 @@ const cartSlice = createSlice({
     },
 
     removeCart: (state, action) => {
-      const updatedCart = state.filter((item) => item.id !== action.payload.id);
+      const updatedCart = state.filter((item) => item.id !== action.payload);
 
       saveCartToLocalStorage(updatedCart);
 
@@ -41,7 +41,7 @@ const cartSlice = createSlice({
     },
 
     incrementQty: (state, action) => {
-      const item = state.find((item) => item.id === action.payload.id);
+      const item = state.find((item) => item.id === action.payload);
 
       if (item) {
         item.quantity += 1;
@@ -51,7 +51,7 @@ const cartSlice = createSlice({
     },
 
     decrementQty: (state, action) => {
-      const item = state.find((item) => item.id === action.payload.id);
+      const item = state.find((item) => item.id === action.payload);
 
       if (item && item.quantity > 1) {
         item.quantity -= 1;
