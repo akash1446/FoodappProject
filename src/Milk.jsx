@@ -206,13 +206,69 @@ const milkitems = [
     description: "Fragrant rose-flavored milk.",
     category: "Milk",
   },
+  {
+    id: 70,
+    name: "Chocolate Milk",
+    price: 300,
+    imageUrl: "Images/MilkItems/chocolatemilk.jpg",
+    description: "Fragrant chocolate-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 71,
+    name: "Coconut Milk",
+    price: 450,
+    imageUrl: "Images/MilkItems/coconutmilk.jpg",
+    description: "Fragrant coconut-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 72,
+    name: "Diary Milk",
+    price: 550,
+    imageUrl: "Images/MilkItems/diarymilk.jpg",
+    description: "Fragrant diary-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 73,
+    name: "Hawlet Milk",
+    price: 260,
+    imageUrl: "Images/MilkItems/halwetmilk.jpg",
+    description: "Fragrant hawlet-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 74,
+    name: "Nescafe Milk",
+    price: 350,
+    imageUrl: "Images/MilkItems/nescafe.jpg",
+    description: "Fragrant nescafe-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 75,
+    name: "Powder Milk",
+    price: 250,
+    imageUrl: "Images/MilkItems/powder.jpg",
+    description: "Fragrant powder-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 76,
+    name: "Amul Milk",
+    price: 500,
+    imageUrl: "Images/MilkItems/amulmilk.jpg",
+    description: "Fragrant amul-flavored milk.",
+    category: "Milk",
+  },
 ];
 
 function Milk() {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 12;
 
   // =========================
   // PRICE FILTER SLIDER 💰
