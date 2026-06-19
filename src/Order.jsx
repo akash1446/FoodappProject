@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -7,7 +7,15 @@ import {
   clearOrders,
   confirmOrder,
   cancelOrder,
+  setOrders,
 } from "./redux/orderSlice";
+
+import {
+  getOrdersByCustomer,
+  updateOrderStatus,
+  deleteOrder,
+  clearOrdersForCustomer,
+} from "./redux/orderapis";
 
 import "./Order.css";
 
@@ -19,6 +27,51 @@ function Order() {
   const dispatch = useDispatch();
 
   const orders = useSelector((globalState) => globalState.orders) || [];
+
+  // =========================
+  // LOGGED IN USER (FROM LOCAL STORAGE)
+  // =========================
+
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  // =========================
+  // LOADING STATE
+  // =========================
+
+  const [loading, setLoading] = useState(false);
+
+  // =========================
+  // FETCH ORDERS FROM DB ON MOUNT
+  // =========================
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (!loggedInUser?.id) return;
+
+      setLoading(true);
+
+      try {
+        const data = await getOrdersByCustomer(loggedInUser.id);
+
+        const formatted = data.map((o) => ({
+          orderId: o.id,
+          date: o.orderTime,
+          status: o.status,
+          totalPrice: o.totalAmount,
+          items: JSON.parse(o.itemsSummary || "[]"),
+        }));
+
+        dispatch(setOrders(formatted));
+      } catch (err) {
+        console.error("Could not sync orders from server:", err.message);
+        // falls back silently to whatever is already in localStorage/Redux
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, [dispatch]);
 
   // =========================
   // VALID ORDERS
@@ -37,7 +90,13 @@ function Order() {
   // REMOVE SINGLE ORDER
   // =========================
 
-  const handleRemoveOrder = (id) => {
+  const handleRemoveOrder = async (id) => {
+    try {
+      await deleteOrder(id);
+    } catch (err) {
+      console.error("Failed to delete order on server:", err.message);
+    }
+
     dispatch(removeOrder(id));
   };
 
@@ -45,7 +104,15 @@ function Order() {
   // CLEAR ALL ORDERS
   // =========================
 
-  const handleClearOrders = () => {
+  const handleClearOrders = async () => {
+    try {
+      if (loggedInUser?.id) {
+        await clearOrdersForCustomer(loggedInUser.id);
+      }
+    } catch (err) {
+      console.error("Failed to clear orders on server:", err.message);
+    }
+
     dispatch(clearOrders());
   };
 
@@ -53,7 +120,13 @@ function Order() {
   // CONFIRM ORDER
   // =========================
 
-  const handleConfirmOrder = (id) => {
+  const handleConfirmOrder = async (id) => {
+    try {
+      await updateOrderStatus(id, "Confirmed");
+    } catch (err) {
+      console.error("Failed to confirm order on server:", err.message);
+    }
+
     dispatch(confirmOrder(id));
   };
 
@@ -61,7 +134,13 @@ function Order() {
   // CANCEL ORDER
   // =========================
 
-  const handleCancelOrder = (id) => {
+  const handleCancelOrder = async (id) => {
+    try {
+      await updateOrderStatus(id, "Cancelled");
+    } catch (err) {
+      console.error("Failed to cancel order on server:", err.message);
+    }
+
     dispatch(cancelOrder(id));
   };
 
@@ -73,10 +152,7 @@ function Order() {
 
       <div className="video-background">
         <video autoPlay muted loop playsInline>
-          <source
-            src="/videos/food.mp4"
-            type="video/mp4"
-          />
+          <source src="/videos/food.mp4" type="video/mp4" />
         </video>
       </div>
 

@@ -29,12 +29,20 @@ const orderSlice = createSlice({
 
   reducers: {
     // =========================
+    // SET ORDERS (FROM DB)
+    // =========================
+    setOrders: (state, action) => {
+      saveOrdersToLocalStorage(action.payload);
+      return action.payload;
+    },
+
+    // =========================
     // ADD TO ORDERS
     // =========================
     addToOrders: (state, action) => {
       state.push({
         ...action.payload,
-        status: "Pending",
+        status: action.payload.status || "Pending",
       });
 
       saveOrdersToLocalStorage(state);
@@ -94,6 +102,7 @@ const orderSlice = createSlice({
 // EXPORT ACTIONS
 // =========================
 export const {
+  setOrders,
   addToOrders,
   confirmOrder,
   cancelOrder,

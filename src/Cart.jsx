@@ -14,6 +14,8 @@ import { applyCoupon, resetCoupon } from "./redux/cuponSlice";
 
 import { addToOrders } from "./redux/orderSlice";
 
+import { createOrder } from "./redux/orderapis";
+
 import { toast, ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -213,7 +215,7 @@ function Cart() {
   ========================= */
 
   const templateParams = {
-    logo:  "https://foodapp-project-umber.vercel.app/logo.png",
+    logo: "https://foodapp-project-umber.vercel.app/logo.png",
 
     order_id: `ORDER-${Date.now()}`,
 
@@ -228,10 +230,10 @@ function Cart() {
     })),
 
     cost: {
-    shipping: 50,
-    tax: taxAmount.toFixed(2),
-    total: netAmount.toFixed(2),
-    couponAmount: couponDiscountAmount.toFixed(2),
+      shipping: 50,
+      tax: taxAmount.toFixed(2),
+      total: netAmount.toFixed(2),
+      couponAmount: couponDiscountAmount.toFixed(2),
     },
 
     email: customerEmail,
@@ -280,9 +282,38 @@ function Cart() {
         "hv8bYVtgRnp1EFM51",
       )
 
-      .then(() => {
+      .then(async () => {
+        // =========================
+        // GET LOGGED-IN USER FROM LOCAL STORAGE
+        // =========================
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        // =========================
+        // SAVE ORDER TO DATABASE
+        // =========================
+        let savedOrder = null;
+
+        try {
+          savedOrder = await createOrder({
+            customerId: loggedInUser?.id || null,
+            customerName: loggedInUser?.name || customerEmail.split("@")[0],
+            customerEmail: customerEmail,
+            deliveryAddress: "Not specified",
+            totalAmount: Number(netAmount),
+            itemsSummary: JSON.stringify(cartItems),
+            status: "Pending",
+          });
+        } catch (err) {
+          console.error("Failed to save order to server:", err.message);
+          // order still proceeds locally even if DB save fails
+        }
+
+        // =========================
+        // USE THE REAL DB ID IF AVAILABLE, OTHERWISE FALL BACK TO A LOCAL ID
+        // =========================
         let purchaseDetails = {
-          orderId: "ORD-" + Math.floor(Math.random() * 1000000000),
+          orderId:
+            savedOrder?.id ?? "ORD-" + Math.floor(Math.random() * 1000000000),
 
           date: new Date().toLocaleString(),
 
