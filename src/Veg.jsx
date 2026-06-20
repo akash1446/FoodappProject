@@ -72,9 +72,9 @@ const products = [
   },
   {
     id: 8,
-    name: "Vada",
+    name: "Voda",
     price: 30,
-    imageUrl: "Images/VegItems/vada.jpg",
+    imageUrl: "Images/VegItems/voda.jpg",
     desc: "Crispy South Indian snack served with chutney.",
     category: "Veg",
   },
