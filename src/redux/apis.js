@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8083/api";
+const BASE_URL = "https://foodapp-backend.onrender.com/api";
 
 export const registerUser = async (userData) => {
   const res = await fetch(`${BASE_URL}/auth/register`, {
@@ -25,6 +25,3 @@ export const loginUser = async (credentials) => {
   }
   return res.json();
 };
-
-
-
