@@ -1,0 +1,442 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { addToCart } from "./redux/cartSlice";
+import { addToOrders } from "./redux/orderSlice";
+
+// Notifications & Effects
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import Swal from "sweetalert2";
+
+// Styling
+import "./Milk.css";
+
+const milkitems = [
+  {
+    id: 46,
+    name: "Milk",
+    price: 50,
+    imageUrl: "Images/MilkItems/milk.jpg",
+    description: "Fresh full cream milk.",
+    category: "Milk",
+  },
+  {
+    id: 47,
+    name: "Curd",
+    price: 40,
+    imageUrl: "Images/MilkItems/curd.jpg",
+    description: "Thick and fresh curd.",
+    category: "Milk",
+  },
+  {
+    id: 48,
+    name: "Butter",
+    price: 120,
+    imageUrl: "Images/MilkItems/butter-milk.jpg",
+    description: "Creamy butter.",
+    category: "Milk",
+  },
+  {
+    id: 49,
+    name: "Condensed Milk",
+    price: 150,
+    imageUrl: "Images/MilkItems/condsenedmilk.jpg",
+    description: "Sweet condensed milk.",
+    category: "Milk",
+  },
+  {
+    id: 50,
+    name: "Diary",
+    price: 200,
+    imageUrl: "Images/MilkItems/diary.jpg",
+    description: "Soft diary.",
+    category: "Milk",
+  },
+  {
+    id: 51,
+    name: "Fresh Milk",
+    price: 500,
+    imageUrl: "Images/MilkItems/fresh.jpg",
+    description: "Pure fresh milk.",
+    category: "Milk",
+  },
+  {
+    id: 52,
+    name: "Milk Mate",
+    price: 30,
+    imageUrl: "Images/MilkItems/milkmate.jpg",
+    description: "Milk enhancer.",
+    category: "Milk",
+  },
+  {
+    id: 53,
+    name: "Nido",
+    price: 60,
+    imageUrl: "Images/MilkItems/nido.jpg",
+    description: "Fortified milk.",
+    category: "Milk",
+  },
+  {
+    id: 54,
+    name: "Silk",
+    price: 100,
+    imageUrl: "Images/MilkItems/silk.jpg",
+    description: "Smooth and creamy.",
+    category: "Milk",
+  },
+  {
+    id: 55,
+    name: "Milk Powder",
+    price: 300,
+    imageUrl: "Images/MilkItems/milkpowder.jpg",
+    description: "Instant milk.",
+    category: "Milk",
+  },
+  {
+    id: 56,
+    name: "Whole Milk",
+    price: 180,
+    imageUrl: "Images/MilkItems/wholemilk.jpg",
+    description: "Nutritious whole milk.",
+    category: "Milk",
+  },
+  {
+    id: 57,
+    name: "Parmalat",
+    price: 250,
+    imageUrl: "Images/MilkItems/parmalat.jpg",
+    description: "Fresh milk.",
+    category: "Milk",
+  },
+  {
+    id: 58,
+    name: "Cowa Milk",
+    price: 80,
+    imageUrl: "Images/MilkItems/cowamilk.jpg",
+    description: "Delicious milk.",
+    category: "Milk",
+  },
+  {
+    id: 59,
+    name: "Lassi",
+    price: 50,
+    imageUrl: "Images/MilkItems/lassi.jpg",
+    description: "Traditional drink.",
+    category: "Milk",
+  },
+  {
+    id: 60,
+    name: "Chocolate Milk",
+    price: 350,
+    imageUrl: "Images/MilkItems/chocolate.jpg",
+    description: "Delicious chocolate-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 61,
+    name: "Milkshake",
+    price: 90,
+    imageUrl: "Images/MilkItems/shake.jpg",
+    description: "Flavored drink.",
+    category: "Milk",
+  },
+  {
+    id: 62,
+    name: "Arokya Milk",
+    price: 70,
+    imageUrl: "Images/MilkItems/aroky.jpg",
+    description: "Delicious milk.",
+    category: "Milk",
+  },
+  {
+    id: 63,
+    name: "Yogurt",
+    price: 60,
+    imageUrl: "Images/MilkItems/yogurt.jpg",
+    description: "Healthy yogurt.",
+    category: "Milk",
+  },
+  {
+    id: 64,
+    name: "Hastun Curd",
+    price: 140,
+    imageUrl: "Images/MilkItems/hastuncurd.jpg",
+    description: "Traditional curd.",
+    category: "Milk",
+  },
+  {
+    id: 65,
+    name: "Toned Milk",
+    price: 200,
+    imageUrl: "Images/MilkItems/toned.jpg",
+    description: "Toned milk.",
+    category: "Milk",
+  },
+  {
+    id: 66,
+    name: "Cheese",
+    price: 200,
+    imageUrl: "Images/MilkItems/cheese.jpg",
+    description: "Fresh cheese.",
+    category: "Milk",
+  },
+  {
+    id: 67,
+    name: "Paneer",
+    price: 40,
+    imageUrl: "Images/MilkItems/paneer.jpg",
+    description: "Fresh paneer.",
+    category: "Milk",
+  },
+  {
+    id: 68,
+    name: "Organic Milk",
+    price: 200,
+    imageUrl: "Images/MilkItems/organicmilk.jpg",
+    description: "Organic and healthy milk.",
+    category: "Milk",
+  },
+  {
+    id: 69,
+    name: "Rose Milk",
+    price: 200,
+    imageUrl: "Images/MilkItems/rosemilk.jpg",
+    description: "Fragrant rose-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 70,
+    name: "Chocolate Milk",
+    price: 300,
+    imageUrl: "Images/MilkItems/chocolatemilk.jpg",
+    description: "Fragrant chocolate-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 71,
+    name: "Coconut Milk",
+    price: 450,
+    imageUrl: "Images/MilkItems/coconutmilk.jpg",
+    description: "Fragrant coconut-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 72,
+    name: "Diary Milk",
+    price: 550,
+    imageUrl: "Images/MilkItems/diarymilk.jpg",
+    description: "Fragrant diary-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 73,
+    name: "Hawlet Milk",
+    price: 260,
+    imageUrl: "Images/MilkItems/halwetmilk.jpg",
+    description: "Fragrant hawlet-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 74,
+    name: "Nescafe Milk",
+    price: 350,
+    imageUrl: "Images/MilkItems/nescafe.jpg",
+    description: "Fragrant nescafe-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 75,
+    name: "Powder Milk",
+    price: 250,
+    imageUrl: "Images/MilkItems/powder.jpg",
+    description: "Fragrant powder-flavored milk.",
+    category: "Milk",
+  },
+  {
+    id: 76,
+    name: "Amul Milk",
+    price: 500,
+    imageUrl: "Images/MilkItems/amulmilk.jpg",
+    description: "Fragrant amul-flavored milk.",
+    category: "Milk",
+  },
+];
+
+function Milk() {
+  const dispatch = useDispatch();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+  // =========================
+  // PRICE FILTER SLIDER 💰
+  // =========================
+  const highestPrice = Math.max(...milkitems.map((item) => item.price));
+  const [maxPrice, setMaxPrice] = useState(highestPrice);
+
+  // =========================
+  // ⭐ RATING (ADDED ONLY)
+  // =========================
+  const getRating = (id) => {
+    const rating = Math.min(3 + (id % 3) + Math.random(), 5);
+    return Math.round(rating);
+  };
+
+  const renderStars = (rating) => {
+    return "★★★★★☆☆☆☆☆".slice(5 - rating, 10 - rating);
+  };
+
+  // =========================
+  // SWEET ALERT
+  // =========================
+  const showEffect = (item) => {
+    Swal.fire({
+      icon: "success",
+      title: "Added to Cart 🥛",
+      text: `${item.name} added successfully!`,
+      confirmButtonColor: "#27ae60",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+  };
+
+  // =========================
+  // ADD TO CART
+  // =========================
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+    dispatch(addToOrders(item));
+
+    toast.success(`🥛 ${item.name} added successfully!`);
+    showEffect(item);
+  };
+
+  // =========================
+  // FILTER BY PRICE
+  // =========================
+  const filteredItems = milkitems.filter((item) => item.price <= maxPrice);
+
+  // =========================
+  // PAGINATION
+  // =========================
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = filteredItems.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // =========================
+  // PRICE CHANGE
+  // =========================
+  const handlePriceChange = (e) => {
+    setMaxPrice(Number(e.target.value));
+    setCurrentPage(1); // reset to page 1 whenever the filter changes
+  };
+
+  return (
+    <div className="store-wrapper">
+      <ToastContainer position="top-right" autoClose={2000} />
+
+      {/* VIDEO */}
+      <video autoPlay muted loop playsInline className="background-video">
+        <source src="Images/MilkItems/milkvideo.mp4" type="video/mp4" />
+      </video>
+
+      <div className="video-overlay"></div>
+
+      {/* HEADER */}
+      <div className="header-section">
+        <h1>🥛 Milk Products</h1>
+      </div>
+
+      {/* PRICE FILTER SLIDER */}
+      <div className="price-filter">
+        <p className="price-filter-label">Max Price: ₹{maxPrice}</p>
+        <input
+          type="range"
+          min="0"
+          max={highestPrice}
+          step="10"
+          value={maxPrice}
+          onChange={handlePriceChange}
+          className="price-slider"
+        />
+      </div>
+
+      {/* PRODUCTS */}
+      <div className="list-container">
+        {currentItems.map((item) => (
+          <div key={item.id} className="grid-card">
+            <div className="img-box">
+              <img src={item.imageUrl} alt={item.name} />
+            </div>
+
+            <div className="card-info">
+              <h3>{item.name}</h3>
+
+              {/* ⭐ RATING ADDED */}
+              <p className="rating">{renderStars(getRating(item.id))}</p>
+
+              <p className="price">₹{item.price}</p>
+              <p className="desc">{item.description}</p>
+
+              <button
+                className="cart-btn"
+                onClick={() => handleAddToCart(item)}
+              >
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        ))}
+
+        {currentItems.length === 0 && (
+          <p className="no-results">No items match this price range.</p>
+        )}
+      </div>
+
+      {/* PAGINATION */}
+      <div className="pagination">
+        <button
+          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </button>
+
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+          <button
+            key={n}
+            className={currentPage === n ? "active" : ""}
+            onClick={() => handlePageChange(n)}
+          >
+            {n}
+          </button>
+        ))}
+
+        <button
+          onClick={() =>
+            handlePageChange(Math.min(currentPage + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Milk;

@@ -1,0 +1,476 @@
+/* ================= MAIN WRAPPER ================= */
+
+.main-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background: #000;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ================= VIDEO ================= */
+
+.hero-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= OVERLAY ================= */
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ================= NAVBAR ================= */
+
+.top-nav {
+  width: 100%;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 34px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: #ff6b00;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* ================= SEARCH BOX ================= */
+
+.search-box {
+  width: 260px;
+  padding: 12px 18px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 15px;
+  backdrop-filter: blur(5px);
+}
+
+.search-box::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================= BUTTONS ================= */
+
+.menu-trigger,
+.cta-main,
+.secondary-btn {
+  padding: 13px 28px;
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.menu-trigger,
+.cta-main {
+  background: linear-gradient(45deg, #ff6b00, #ff9500);
+  color: white;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.menu-trigger:hover,
+.cta-main:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.7);
+}
+
+.secondary-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* ================= HERO CONTENT ================= */
+
+.hero-center-content {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-bottom: 25px;
+  font-size: 15px;
+  backdrop-filter: blur(6px);
+}
+
+.main-title {
+  font-size: 70px;
+  line-height: 1.1;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.main-title span {
+  color: #ff9500;
+}
+
+.sub-caption {
+  font-size: 18px;
+  max-width: 700px;
+  margin: auto;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 35px;
+}
+
+/* ================= FOOD TEXT ANIMATION ================= */
+
+.food-text-animation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.food-text-animation span {
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 15px;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* ================= HERO BUTTONS ================= */
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ================= FOOD SCROLL ================= */
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+.food-scroll-wrapper {
+  overflow: hidden;
+}
+
+.food-scroll-track {
+  display: flex;
+  width: max-content;
+  animation: scrollFood 20s linear infinite;
+}
+
+@keyframes scrollFood {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.food-circle-card {
+  width: 180px;
+  margin: 0 15px;
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.food-circle-card:hover {
+  transform: translateY(-8px);
+}
+
+.food-circle-card img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+}
+
+.food-circle-card span {
+  display: block;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.no-food {
+  text-align: center;
+  font-size: 30px;
+  padding: 40px;
+}
+
+/* ================= POPUP MENU ================= */
+
+.full-screen-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.menu-card {
+  width: 90%;
+  max-width: 850px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 45px;
+  border-radius: 25px;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.close-x {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.popup-title {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 34px;
+  color: #ff9500;
+}
+
+.cat-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.option {
+  padding: 30px;
+  border-radius: 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s ease;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.option:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 107, 0, 0.25);
+}
+
+.option .icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.option h3 {
+  font-size: 22px;
+}
+
+/* ================= FOOTER ================= */
+
+.premium-footer {
+  background: #111;
+  padding: 60px 40px 20px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-box {
+  flex: 1;
+  min-width: 280px;
+}
+
+.footer-logo {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.footer-logo span {
+  color: #ff6b00;
+}
+
+.footer-box h3 {
+  margin-bottom: 18px;
+  color: #ff9500;
+}
+
+.footer-box p {
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ================= SOCIAL ICONS ================= */
+
+.social-icons {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.social-icons a {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  transition: 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.social-icons a:hover {
+  transform: translateY(-6px) scale(1.1);
+  background: linear-gradient(45deg, #ff6b00, #ff9500);
+  box-shadow: 0 0 18px rgba(255, 107, 0, 0.7);
+}
+
+/* ================= FOOTER BOTTOM ================= */
+
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .main-title {
+    font-size: 55px;
+  }
+
+  .top-nav {
+    padding: 20px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 42px;
+  }
+
+  .top-nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .food-circle-card {
+    width: 150px;
+  }
+
+  .food-circle-card img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .popup-title {
+    font-size: 28px;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 34px;
+  }
+
+  .hero-badge {
+    font-size: 13px;
+  }
+
+  .sub-caption {
+    font-size: 15px;
+  }
+
+  .food-text-animation span {
+    font-size: 13px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}

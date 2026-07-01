@@ -1,0 +1,229 @@
+/* =========================
+   WRAPPER
+========================= */
+.store-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 40px;
+  overflow: hidden;
+}
+
+/* =========================
+   BACKGROUND VIDEO
+========================= */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header-section {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.header-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e74c3c;
+  text-shadow: 0 0 10px rgba(231, 76, 60, 0.6);
+}
+
+/* =========================
+   GRID
+========================= */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  padding: 20px 5%;
+}
+
+/* =========================
+   CARD
+========================= */
+.grid-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 14px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+  transition: all 0.3s ease;
+}
+
+.grid-card:hover {
+  transform: translateY(-6px);
+}
+
+/* =========================
+   IMAGE
+========================= */
+.img-box img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* =========================
+   CARD INFO
+========================= */
+.card-info {
+  padding: 12px;
+  color: white;
+}
+
+.card-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+.desc {
+  font-size: 12px;
+  opacity: 0.8;
+  margin: 5px 0;
+}
+
+/* =========================
+   PRICE
+========================= */
+.price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   ⭐ RATING (ONE LINE)
+========================= */
+.rating {
+  margin: 6px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffb400;
+  letter-spacing: 2px;
+
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.cart-btn {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.cart-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* =========================
+   PAGINATION
+========================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:hover {
+  background: rgba(231, 76, 60, 0.4);
+}
+
+.pagination button.active {
+  background: #e74c3c;
+  font-weight: bold;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .header-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .img-box img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+.price-filter {
+  max-width: 400px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+.price-filter-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.price-slider {
+  width: 100%;
+  cursor: pointer;
+}
+
+.no-results {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  font-style: italic;
+}
