@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "https://foodapp-project-umber.vercel.app")
+@CrossOrigin(origins = "https://foodapp-w2.netlify.app")
 public class AuthController {
 
     @PostMapping("/login")
