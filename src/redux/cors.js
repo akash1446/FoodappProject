@@ -1,20 +1,20 @@
 const cors = require("cors");
 
 const allowedOrigins = [
-  "http://localhost:5173",
   "https://foodapp-project-umber.vercel.app",
+  "https://foodapp-w2.netlify.app", // keep if still in use
+  "http://localhost:5173", // for local dev, adjust port as needed
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests with no origin (like mobile apps, curl, Postman)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
       }
-      return callback(new Error("Not allowed by CORS"));
     },
-    credentials: true, // only if you're using cookies/auth headers
+    credentials: true,
   }),
 );
