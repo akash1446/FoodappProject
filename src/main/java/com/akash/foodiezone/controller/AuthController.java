@@ -2,6 +2,9 @@ package com.akash.foodiezone.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import com.akash.foodiezone.dto.LoginRequest;
+import com.akash.foodiezone.dto.RegisterRequest;
+
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "https://foodapp-w2.netlify.app")
