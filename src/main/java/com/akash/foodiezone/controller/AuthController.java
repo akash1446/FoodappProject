@@ -6,7 +6,7 @@ import com.akash.foodiezone.dto.LoginRequest;
 import com.akash.foodiezone.dto.RegisterRequest;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 @CrossOrigin(origins = "https://foodapp-w2.netlify.app")
 public class AuthController {
 
