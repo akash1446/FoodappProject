@@ -1,4 +1,4 @@
-const BASE_URL = "https://foodapp-backend.onrender.com/api";
+const BASE_URL = "https://foodappproject-rbsx.onrender.com";
 
 export const registerUser = async (userData) => {
   const res = await fetch(`${BASE_URL}/auth/register`, {

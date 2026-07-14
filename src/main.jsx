@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import App from "./App";
 import store from "./redux/store";
